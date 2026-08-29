@@ -49,14 +49,14 @@ main{
 }
 .stagecol{position:sticky;top:12px}
 @media(max-width:940px){
-  body{padding-top:50vh}
+  body{padding-top:34vh}
   main{grid-template-columns:1fr}
   .stagecol{position:static}
   /* pin the preview to the top 50% of the screen — it never scrolls away.
      !important guards against later same-specificity rules overriding this. */
   .stage{
     position:fixed !important;top:0 !important;left:0 !important;right:0 !important;
-    height:50vh !important;z-index:100 !important;
+    height:34vh !important;z-index:100 !important;
     margin:0 !important;border-radius:0 0 22px 22px !important;box-sizing:border-box;
   }
   .screen{height:100% !important;align-items:center}
@@ -2041,6 +2041,38 @@ $('snapBtn').addEventListener('click',()=>{
     },'image/png');
   }));
 });
+
+/* ================= mobile pinned-preview enforcement =================
+   Belt-and-suspenders: apply this directly via JS with !important
+   priority so it can never be silently overridden by CSS ordering,
+   specificity, or a stale cached stylesheet. Re-applied on resize and
+   orientation change so rotating the phone doesn't break it. */
+const stageEl=document.querySelector('.stage');
+function enforceMobilePin(){
+  const isMobile=window.innerWidth<=940;
+  if(isMobile){
+    stageEl.style.setProperty('position','fixed','important');
+    stageEl.style.setProperty('top','0','important');
+    stageEl.style.setProperty('left','0','important');
+    stageEl.style.setProperty('right','0','important');
+    stageEl.style.setProperty('height','34vh','important');
+    stageEl.style.setProperty('z-index','100','important');
+    stageEl.style.setProperty('margin','0','important');
+    document.body.style.setProperty('padding-top','34vh','important');
+  }else{
+    stageEl.style.removeProperty('position');
+    stageEl.style.removeProperty('top');
+    stageEl.style.removeProperty('left');
+    stageEl.style.removeProperty('right');
+    stageEl.style.removeProperty('height');
+    stageEl.style.removeProperty('z-index');
+    stageEl.style.removeProperty('margin');
+    document.body.style.removeProperty('padding-top');
+  }
+}
+enforceMobilePin();
+window.addEventListener('resize',enforceMobilePin);
+window.addEventListener('orientationchange',enforceMobilePin);
 </script>
 </body>
 </html>
