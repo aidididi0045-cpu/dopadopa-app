@@ -298,6 +298,7 @@ footer{text-align:center;color:#5f4f85;font-size:12px;padding:20px}
     <div id="result">
       <div class="row">
         <a id="dlLink" class="btn" download="dopadopa.mp4">⬇ ダウンロード</a>
+        <button id="shareBtn" class="btn sub" style="display:none">📤 保存する</button>
         <span class="note" id="resultNote"></span>
       </div>
     </div>
@@ -1920,7 +1921,7 @@ function setState(msg,on){
   recState.classList.toggle('on',!!on);
 }
 let lastResultURL=null;
-function showResult(url,filename,note){
+function showResult(url,filename,note,blob){
   if(lastResultURL)URL.revokeObjectURL(lastResultURL);
   lastResultURL=url;
   const dl=$('dlLink');
@@ -1928,6 +1929,28 @@ function showResult(url,filename,note){
   dl.textContent='⬇ '+filename+' をダウンロード';
   $('resultNote').textContent=note||'';
   $('result').style.display='block';
+
+  // On phones (iOS Safari especially) a plain <a download> on a blob URL
+  // often just opens/plays the file instead of saving it. The Web Share
+  // API's native share sheet has a proper "Save Video/Image" option, so
+  // offer it whenever the browser supports sharing files.
+  const shareBtn=$('shareBtn');
+  shareBtn.style.display='none';
+  if(blob && navigator.canShare){
+    try{
+      const file=new File([blob],filename,{type:blob.type});
+      if(navigator.canShare({files:[file]})){
+        shareBtn.style.display='inline-block';
+        shareBtn.onclick=async()=>{
+          try{
+            await navigator.share({files:[file],title:'ドパドパめぇ〜かぁ〜'});
+          }catch(e){
+            // user cancelled the share sheet, or share failed — no-op
+          }
+        };
+      }
+    }catch(e){/* File/share construction failed — fall back to the download link only */}
+  }
 }
 
 recBtn.addEventListener('click',()=>{
@@ -1965,7 +1988,7 @@ function recordVideo(sec,fmt){
     const note=fellBack
       ?'このブラウザはMP4書き出しに未対応のためWebMで保存しました（SafariやChrome最新版ならMP4が使えます）'
       :(isMp4?'':'WebM形式です。SNSによってはMP4変換が必要な場合があります。');
-    showResult(url,'dopadopa.'+(isMp4?'mp4':'webm'),note);
+    showResult(url,'dopadopa.'+(isMp4?'mp4':'webm'),note,blob);
     $('result').scrollIntoView({behavior:'smooth',block:'nearest'});
   };
   S.recording=true; S.capturing=true;
@@ -2019,7 +2042,7 @@ async function recordGif(sec){
         recBtn.disabled=false;
         setState('できあがり！',false);
         const url=URL.createObjectURL(blob);
-        showResult(url,'dopadopa.gif','色をできるだけ保つ設定にしています。GIFは256色までの形式なので、鮮やかさを完全に維持したい場合はMP4/WebMがおすすめです。ファイルサイズは長さや派手さで変わります。');
+        showResult(url,'dopadopa.gif','色をできるだけ保つ設定にしています。GIFは256色までの形式なので、鮮やかさを完全に維持したい場合はMP4/WebMがおすすめです。ファイルサイズは長さや派手さで変わります。',blob);
         $('result').scrollIntoView({behavior:'smooth',block:'nearest'});
       });
       gif.render();
@@ -2034,10 +2057,9 @@ $('snapBtn').addEventListener('click',()=>{
   requestAnimationFrame(()=>requestAnimationFrame(()=>{
     cv.toBlob(b=>{
       S.capturing=false;
-      const a=document.createElement('a');
-      a.href=URL.createObjectURL(b);
-      a.download='dopadopa.png';
-      a.click();
+      const url=URL.createObjectURL(b);
+      showResult(url,'dopadopa.png','',b);
+      $('result').scrollIntoView({behavior:'smooth',block:'nearest'});
     },'image/png');
   }));
 });
