@@ -831,16 +831,30 @@ function toneApplied(em){
    fading smoothly. Rendering each glyph once to an offscreen canvas
    and reusing it via drawImage() turns that into a cheap bitmap blit. */
 const emojiSpriteCache=new Map();
-const SPRITE_REF=88;
+const SPRITE_FONT_PX=72; // reference font size baked into each cached sprite
+const spriteMeasureCanvas=document.createElement('canvas');
+const spriteMeasureCtx=spriteMeasureCanvas.getContext('2d');
 function getEmojiSprite(text){
   let spr=emojiSpriteCache.get(text);
   if(spr)return spr;
+  const fontStr=`${SPRITE_FONT_PX}px 'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji',sans-serif`;
+  // Measure first — some ZWJ sequences (e.g. turban person + gender)
+  // don't have a combined glyph on every device/font and fall back to
+  // rendering as multiple separate glyphs side by side, which can be
+  // much wider than a normal single emoji. A fixed-size canvas clipped
+  // that (centered text got cut off symmetrically on both edges —
+  // "half the face missing"). Sizing to the actual measured width
+  // fixes it for any glyph, known or unknown, ligature or fallback.
+  spriteMeasureCtx.font=fontStr;
+  const measuredW=spriteMeasureCtx.measureText(text).width;
+  const w=Math.max(Math.ceil(SPRITE_FONT_PX*1.15),Math.ceil(measuredW+SPRITE_FONT_PX*0.35));
+  const h=Math.ceil(SPRITE_FONT_PX*1.35);
   const c=document.createElement('canvas');
-  c.width=c.height=SPRITE_REF;
+  c.width=w; c.height=h;
   const cx=c.getContext('2d');
-  cx.font=`${Math.round(SPRITE_REF*0.82)}px 'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji',sans-serif`;
+  cx.font=fontStr;
   cx.textAlign='center';cx.textBaseline='middle';
-  cx.fillText(text,SPRITE_REF/2,SPRITE_REF/2+SPRITE_REF*0.04);
+  cx.fillText(text,w/2,h/2+h*0.03);
   if(emojiSpriteCache.size>300)emojiSpriteCache.delete(emojiSpriteCache.keys().next().value);
   emojiSpriteCache.set(text,c);
   return c;
@@ -1763,7 +1777,12 @@ function frame(now){
     ctx.rotate(s.rot);
     ctx.globalAlpha=k;
     const fs=s.size*S.stampSize*(0.7+k*0.3);
-    ctx.drawImage(getEmojiSprite(toneApplied(s.em)),-fs/2,-fs/2,fs,fs);
+    {
+      const spr=getEmojiSprite(toneApplied(s.em));
+      const scale=fs/Math.max(spr.width,spr.height);
+      const dw=spr.width*scale, dh=spr.height*scale;
+      ctx.drawImage(spr,-dw/2,-dh/2,dw,dh);
+    }
     ctx.restore();
   }
 
