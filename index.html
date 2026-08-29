@@ -1,0 +1,2039 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ドパドパめぇ〜かぁ〜</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%0A%3Cdefs%3E%0A%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23ff2d78%22%2F%3E%0A%3Cstop%20offset%3D%2220%25%22%20stop-color%3D%22%23ff9d00%22%2F%3E%0A%3Cstop%20offset%3D%2240%25%22%20stop-color%3D%22%23ffe95d%22%2F%3E%0A%3Cstop%20offset%3D%2260%25%22%20stop-color%3D%22%2339d97a%22%2F%3E%0A%3Cstop%20offset%3D%2280%25%22%20stop-color%3D%22%233db2ff%22%2F%3E%0A%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23a86bff%22%2F%3E%0A%3C%2FlinearGradient%3E%0A%3C%2Fdefs%3E%0A%3Crect%20x%3D%222%22%20y%3D%222%22%20width%3D%2260%22%20height%3D%2260%22%20rx%3D%2216%22%20fill%3D%22url%28%23g%29%22%2F%3E%0A%3Crect%20x%3D%222%22%20y%3D%222%22%20width%3D%2260%22%20height%3D%2260%22%20rx%3D%2216%22%20fill%3D%22none%22%20stroke%3D%22rgba%28255%2C255%2C255%2C.55%29%22%20stroke-width%3D%222%22%2F%3E%0A%3Ctext%20x%3D%2232%22%20y%3D%2234%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22central%22%0A%20%20font-family%3D%22%27Hiragino%20Sans%27%2C%20%27Yu%20Gothic%27%2C%20%27Noto%20Sans%20JP%27%2C%20sans-serif%22%0A%20%20font-weight%3D%22900%22%20font-size%3D%2238%22%20fill%3D%22%23ffffff%22%0A%20%20stroke%3D%22%233d1a55%22%20stroke-width%3D%223%22%20paint-order%3D%22stroke%20fill%22%3E%E3%83%89%3C%2Ftext%3E%0A%3C%2Fsvg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;500;700;800&family=Reggae+One&family=Mochiy+Pop+One&family=DotGothic16&family=Hachi+Maru+Pop&family=Shippori+Mincho:wght@800&family=Yuji+Mai&family=Rampart+One&family=Kaisei+Decol:wght@700&family=Yusei+Magic&family=RocknRoll+One&family=Dela+Gothic+One&family=Zen+Kurenaido&family=Darumadrop+One&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gif.js/0.2.0/gif.js"></script>
+<style>
+:root{
+  --bg:#0b0714;
+  --panel:#181026;
+  --panel2:#221636;
+  --line:#3a2a55;
+  --ink:#fff8e7;
+  --sub:#c9b8e8;
+  --radius:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  background:
+    radial-gradient(1200px 600px at 50% -200px, #241340 0%, transparent 60%),
+    radial-gradient(900px 500px at 100% 100%, #1b0d2e 0%, transparent 55%),
+    var(--bg);
+  color:var(--ink);
+  font-family:'M PLUS 1p',system-ui,sans-serif;
+  font-weight:500;min-height:100%;
+}
+header{text-align:center;padding:22px 16px 8px}
+.logo{
+  font-family:'Darumadrop One',cursive;
+  font-size:clamp(26px,5vw,46px);line-height:1.1;
+  background:linear-gradient(180deg,#fff7c4 5%,#ffd84d 38%,#ff9d00 62%,#ffe27a 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 3px 0 #7a2b00) drop-shadow(0 6px 14px rgba(255,150,0,.35));
+  letter-spacing:.04em;
+}
+.logo .kira{
+  background:linear-gradient(90deg,#ff5db1,#ffb84d,#ffe95d,#7dff8a,#5dc8ff,#b28aff,#ff5db1);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.tagline{color:var(--sub);font-size:13px;margin-top:6px}
+main{
+  max-width:1220px;margin:14px auto 60px;padding:0 14px;
+  display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:20px;align-items:start;
+}
+.stagecol{position:sticky;top:12px}
+@media(max-width:940px){
+  main{grid-template-columns:1fr}
+  .stagecol{position:static}
+  .stage{position:sticky;top:6px;z-index:40}
+  /* keep the preview compact on phones so controls stay reachable */
+  #mainCanvas{width:auto !important;height:auto !important;max-width:100% !important;max-height:42vh !important;}
+}
+/* collapsible cards (tap the heading) */
+.card h2{cursor:pointer;-webkit-user-select:none;user-select:none}
+.card h2 .arrow{margin-left:auto;font-size:12px;color:#8f7fb5;transition:transform .18s}
+.card.closed h2{margin-bottom:0}
+.card.closed h2 .arrow{transform:rotate(-90deg)}
+.card.closed > *:not(h2){display:none}
+
+/* ===== pachinko screen frame ===== */
+.stage{
+  position:relative;border-radius:24px;padding:14px;
+  background:linear-gradient(160deg,#5a3b00,#c98f1a 18%,#ffe27a 32%,#b57612 55%,#7a4d05 78%,#e8b83a 100%);
+  box-shadow:0 18px 50px rgba(0,0,0,.65), inset 0 2px 3px rgba(255,255,255,.55), inset 0 -3px 6px rgba(60,30,0,.6);
+}
+.stage::before{
+  content:"";position:absolute;inset:6px;border-radius:19px;pointer-events:none;
+  border:2px dotted rgba(255,244,180,.9);
+  animation:marquee 1s steps(2) infinite;
+}
+@keyframes marquee{50%{border-color:rgba(255,120,40,.9)}}
+@media (prefers-reduced-motion:reduce){ .stage::before{animation:none} }
+.screen{
+  position:relative;border-radius:12px;overflow:hidden;background:#000;
+  box-shadow:inset 0 0 30px rgba(0,0,0,.9);
+  display:flex;justify-content:center;
+}
+#mainCanvas{display:block;width:100%;height:auto;touch-action:none;cursor:grab}
+#mainCanvas.grabbing{cursor:grabbing}
+.screen .empty{
+  position:absolute;inset:0;display:flex;flex-direction:column;gap:10px;
+  align-items:center;justify-content:center;color:#8f7fb5;font-size:14px;text-align:center;padding:20px;
+  pointer-events:none;
+}
+.empty .big{font-family:'Dela Gothic One';font-size:18px;color:#cdbcf2}
+
+.recbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
+.btn{
+  font-family:'M PLUS 1p';font-weight:800;font-size:14px;
+  border:none;border-radius:12px;padding:11px 16px;cursor:pointer;color:#3d2200;
+  background:linear-gradient(180deg,#fff3b0,#ffcf3f 55%,#ff9d00);
+  box-shadow:0 3px 0 #8a4c00, 0 6px 14px rgba(255,150,0,.3);
+  transition:transform .06s;text-decoration:none;display:inline-block;
+}
+.btn:active{transform:translateY(2px);box-shadow:0 1px 0 #8a4c00}
+.btn:disabled{filter:grayscale(.8);opacity:.55;cursor:not-allowed}
+.btn.sub{background:linear-gradient(180deg,#3a2a55,#241636);color:var(--ink);box-shadow:0 3px 0 #120a20;font-weight:700}
+.btn.rec{
+  background:linear-gradient(180deg,#ff7aa8,#ff2d78 60%,#c40d52);color:#fff;
+  box-shadow:0 3px 0 #6d0030, 0 6px 16px rgba(255,45,120,.35);
+  font-size:15px;padding:12px 20px;
+}
+.presetgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.btn.preset{
+  background:linear-gradient(180deg,#3a2a55,#241636);color:var(--ink);
+  box-shadow:0 3px 0 #120a20;font-weight:800;font-size:13px;padding:10px 8px;
+  border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;gap:6px;
+}
+.btn.preset:active{transform:translateY(2px);box-shadow:0 1px 0 #120a20}
+.preset-swatch{
+  width:100%;height:26px;border-radius:8px;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.25);
+}
+select,input[type="text"]{
+  background:#120a20;border:1px solid var(--line);color:var(--ink);
+  border-radius:10px;padding:9px 10px;font-family:inherit;font-size:14px;
+}
+.recstate{font-size:13px;color:var(--sub)}
+.recstate.on{color:#ff7aa8;font-weight:800}
+#result{margin-top:12px;display:none}
+#result video,#result img{width:100%;border-radius:12px;border:2px solid var(--line);display:block}
+#result .row{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap;align-items:center}
+.note{font-size:12px;color:#8f7fb5;line-height:1.7}
+
+/* ===== control panel ===== */
+.panel{display:flex;flex-direction:column;gap:14px}
+.card{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:var(--radius);padding:16px}
+.card h2{
+  font-family:'Dela Gothic One';font-weight:400;font-size:14px;letter-spacing:.02em;
+  display:flex;align-items:center;gap:10px;margin-bottom:12px;color:#ffe9a8;
+}
+.card h2 .step{
+  width:26px;height:26px;border-radius:50%;flex:none;display:grid;place-items:center;
+  font-size:13px;color:#3d2200;background:linear-gradient(180deg,#fff3b0,#ff9d00);box-shadow:0 2px 0 #8a4c00;
+}
+.subhead{
+  font-size:11.5px;font-weight:800;color:#ffe9a8;letter-spacing:.03em;
+  padding:2px 0 8px;margin-top:14px;border-top:1px dashed var(--line);padding-top:12px;
+  display:flex;align-items:center;gap:6px;
+}
+.subhead:first-of-type{margin-top:0;border-top:none;padding-top:0}
+.field{margin-bottom:12px}
+.field:last-child{margin-bottom:0}
+.field label{display:flex;justify-content:space-between;font-size:12.5px;color:var(--sub);margin-bottom:6px}
+.field label b{color:var(--ink)}
+input[type="range"]{width:100%;accent-color:#ffcf3f}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{
+  flex:1 0 auto;border:1px solid var(--line);background:#120a20;color:var(--sub);
+  border-radius:10px;padding:8px 10px;font-size:12.5px;font-family:inherit;font-weight:700;cursor:pointer;
+}
+.seg button.on{background:linear-gradient(180deg,#fff3b0,#ffcf3f 55%,#ff9d00);color:#3d2200;border-color:#ffcf3f}
+.stampgrid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(40px,1fr));gap:6px;
+  max-height:210px;overflow-y:auto;padding:2px;border:1px solid var(--line);border-radius:12px;
+  background:#0e0819;
+}
+.stampgrid button{
+  font-size:21px;padding:5px 0;background:#120a20;border:1px solid var(--line);
+  border-radius:10px;cursor:pointer;transition:transform .08s;
+}
+.stampgrid button:active{transform:scale(1.25)}
+.stampgrid .cat-title{
+  grid-column:1/-1;font-size:11.5px;color:#ffe9a8;font-weight:800;
+  padding:8px 2px 2px;margin-top:2px;border-top:1px solid var(--line);
+}
+.stampgrid .cat-title:first-child{border-top:none;margin-top:0}
+.stamp-selected-row{
+  display:flex;gap:6px;flex-wrap:wrap;min-height:42px;padding:8px;
+  background:#0e0819;border:1px solid var(--line);border-radius:10px;align-items:center;
+}
+.stamp-selected-row .empty{font-size:11.5px;color:#5f4f85}
+.stamp-chip{
+  font-size:19px;background:#3a2a55;border:1px solid #ffcf3f;border-radius:10px;
+  padding:4px 6px;display:flex;align-items:center;gap:4px;cursor:pointer;line-height:1;
+}
+.stamp-chip .x{font-size:11px;color:#c9b8e8}
+.hint{font-size:11.5px;color:#8f7fb5;margin-top:8px;line-height:1.6}
+.drop{
+  border:2px dashed #5a3f8a;border-radius:12px;padding:20px 14px;text-align:center;
+  color:var(--sub);font-size:13px;cursor:pointer;transition:background .15s;line-height:1.8;
+}
+.drop:hover,.drop.over{background:#221636}
+.drop b{color:#ffe9a8}
+.rowbtns{display:flex;gap:8px;flex-wrap:wrap}
+/* fixed effects layout: pill checkboxes */
+.chkgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.chk{
+  display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink);cursor:pointer;
+  background:#120a20;border:1px solid var(--line);border-radius:10px;padding:8px 10px;min-width:0;
+}
+.chk input{accent-color:#ff2d78;width:15px;height:15px;flex:none}
+.chk span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.chk:has(input:checked){border-color:#ff7aa8;background:#251131}
+.stampgrid button.on{background:#3a2a55;border-color:#ffcf3f;box-shadow:0 0 0 2px rgba(255,207,63,.45)}
+.stampgrid button:disabled{opacity:.3;cursor:not-allowed}
+.stampgrid button:disabled:active{transform:none}
+
+/* ===== cutout editor ===== */
+#cutModal{position:fixed;inset:0;background:rgba(5,2,12,.85);display:none;align-items:center;justify-content:center;padding:16px;z-index:100}
+#cutModal.open{display:flex}
+.cutbox{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:16px;max-width:860px;width:100%;max-height:94vh;overflow:auto}
+.cutbox h3{font-family:'Dela Gothic One';font-weight:400;color:#ffe9a8;margin-bottom:10px;font-size:16px}
+.cutwrap{border-radius:12px;overflow:hidden;border:1px solid var(--line);position:relative}
+#brushCursor{
+  position:absolute;border:2.5px solid #ff2d78;border-radius:50%;
+  pointer-events:none;display:none;transform:translate(-50%,-50%);
+  box-shadow:0 0 0 1px rgba(255,255,255,.65), inset 0 0 0 1px rgba(255,255,255,.4);
+}
+#bucketCursor{
+  position:absolute;pointer-events:none;display:none;
+  transform:translate(-4px,-28px);font-size:26px;
+  filter:drop-shadow(0 0 3px rgba(0,0,0,.85)) drop-shadow(0 0 6px rgba(255,255,255,.5));
+}
+#cutCanvasView{
+  display:block;width:100%;height:auto;touch-action:none;cursor:none;
+  background:repeating-conic-gradient(#2a2140 0% 25%, #171028 0% 50%) 0 0/22px 22px;
+}
+.cut-section{margin-top:14px;padding-top:14px;border-top:1px dashed var(--line)}
+.cut-section:first-of-type{margin-top:14px;padding-top:14px;border-top:1px dashed var(--line)}
+.cut-section-title{font-size:12.5px;font-weight:800;color:#ffe9a8;margin-bottom:10px}
+.cut-auto{
+  background:#1d1330;border:1px solid #4a3560;border-radius:12px;
+  padding:12px;margin-top:14px;border-top:none;
+}
+.toolgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:4px}
+.toolgrid button{
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  background:#120a20;border:1px solid var(--line);color:var(--sub);
+  border-radius:12px;padding:10px 4px;font-family:inherit;font-size:11.5px;font-weight:700;cursor:pointer;
+}
+.toolgrid button .ticon{font-size:22px}
+.toolgrid button.on{
+  color:#fff2c8;background:#241636;
+}
+.cut-footer{display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:8px;margin-top:16px}
+@media(max-width:420px){.cut-footer{grid-template-columns:1fr 1fr;}.cut-footer .cut-done{grid-column:1/-1}}
+.btn.cut-done{
+  background:linear-gradient(180deg,#7dffb0,#39d97a 55%,#1fa85c);color:#04321a;
+  box-shadow:0 3px 0 #0d5a30, 0 6px 14px rgba(57,217,122,.35);
+}
+footer{text-align:center;color:#5f4f85;font-size:12px;padding:20px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo"><span class="kira">ドパドパ</span>めぇ〜かぁ〜</div>
+  <div class="tagline">写真を切り抜いて、キラキラ超ハデ演出のミニ動画をつくろう</div>
+</header>
+
+<main>
+  <!-- ===== stage ===== -->
+  <section class="stagecol">
+    <div class="stage">
+      <div class="screen">
+        <canvas id="mainCanvas" width="720" height="720"></canvas>
+        <div class="empty" id="emptyMsg">
+          <div class="big">まだ何もありません</div>
+          <div>「一発盛り」やエフェクトを選ぶと動き出します。写真を読み込めば被写体も盛れます✨</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="recbar">
+      <button class="btn rec" id="recBtn">● 動画をつくる</button>
+      <select id="recFmt">
+        <option value="mp4" selected>MP4</option>
+        <option value="webm">WebM</option>
+        <option value="gif">GIF</option>
+      </select>
+      <select id="recSec">
+        <option value="5" selected>5秒</option>
+        <option value="10">10秒</option>
+        <option value="15">15秒</option>
+      </select>
+      <select id="aspect">
+        <option value="1:1" selected>1:1</option>
+        <option value="16:9">16:9 ヨコ</option>
+        <option value="9:16">9:16 タテ</option>
+      </select>
+      <button class="btn sub" id="snapBtn">📷 静止画</button>
+      <span class="recstate" id="recState"></span>
+    </div>
+
+    <div id="result">
+      <div class="row">
+        <a id="dlLink" class="btn" download="dopadopa.mp4">⬇ ダウンロード</a>
+        <span class="note" id="resultNote"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== controls ===== -->
+  <aside class="panel">
+
+    <div class="card">
+      <h2><span class="step">1</span>写真＆被写体</h2>
+      <div class="drop" id="drop">
+        ここに画像をドラッグ＆ドロップ<br>または <b>タップしてファイルを選択</b><br>
+        <span style="font-size:11.5px">コピーした画像の貼り付け（Ctrl+V）もOK</span>
+        <input type="file" id="fileInput" accept="image/*" hidden>
+      </div>
+      <div class="rowbtns" style="margin:12px 0">
+        <button class="btn sub" id="openCut" disabled>✂ 切り抜きエディタ</button>
+        <button class="btn sub" id="resetPos" disabled>↺ 位置リセット</button>
+      </div>
+      <div class="field">
+        <label><b>大きさ</b><span id="subScaleVal">100%</span></label>
+        <input type="range" id="subScale" min="20" max="350" value="100">
+      </div>
+      <div class="field">
+        <label><b>回転</b><span id="subRotVal">0°</span></label>
+        <input type="range" id="subRot" min="-60" max="60" value="0">
+      </div>
+      <div class="field">
+        <label><b>よこ位置</b><span id="subXVal">0</span></label>
+        <input type="range" id="subXr" min="-400" max="400" value="0">
+      </div>
+      <div class="field">
+        <label><b>たて位置</b><span id="subYVal">0</span></label>
+        <input type="range" id="subYr" min="-400" max="400" value="0">
+      </div>
+      <div class="hint">プレビューを直接ドラッグしても動かせます。</div>
+    </div>
+
+    <div class="card">
+      <h2 style="cursor:default"><span class="step">⚡</span>一発盛り</h2>
+      <div class="presetgrid">
+        <button class="btn preset" id="presetGold"><span class="preset-swatch" style="background:linear-gradient(135deg,#fff7c4,#ffcf3f,#ff9d00)"></span>✨ ゴールド</button>
+        <button class="btn preset" id="presetPop"><span class="preset-swatch" style="background:linear-gradient(135deg,#ffe3f1,#ff8fc7,#ffffff)"></span>💜 ラブリー</button>
+        <button class="btn preset" id="presetSpeed"><span class="preset-swatch" style="background:linear-gradient(90deg,#ff2d78,#ffe95d,#39d97a,#3db2ff,#a86bff)"></span>⚡ 激アツ集中線</button>
+        <button class="btn preset" id="presetNight"><span class="preset-swatch" style="background:linear-gradient(135deg,#4a2f7a,#1a0f33,#07030f)"></span>🌙 ナイト</button>
+        <button class="btn preset" id="presetSpiral"><span class="preset-swatch" style="background:conic-gradient(from 0deg,#ff2d78,#ff9d00,#ffe95d,#39d97a,#3db2ff,#a86bff,#ff2d78)"></span>🌀 渦巻き</button>
+        <button class="btn preset" id="presetRainbow"><span class="preset-swatch" style="background:linear-gradient(90deg,#ff2d78,#ff9d00,#ffe95d,#39d97a,#3db2ff,#a86bff)"></span>🌈 レインボー</button>
+      </div>
+      <div class="hint" style="text-align:center">タップでそのテイストの設定に一発切り替え</div>
+    </div>
+
+    <div class="card">
+      <h2><span class="step">2</span>エフェクト</h2>
+
+      <div class="subhead">✏️ 縁どり</div>
+      <div class="field">
+        <label><b>色</b></label>
+        <div class="seg" id="outlineSeg">
+          <button data-v="rainbow">レインボー</button>
+          <button data-v="gold" class="on">ゴールド</button>
+          <button data-v="pink">ピンク</button>
+          <button data-v="white">ホワイト</button>
+          <button data-v="none">なし</button>
+        </div>
+      </div>
+      <div class="field">
+        <label><b>太さ</b><span id="outWVal">8px</span></label>
+        <input type="range" id="outW" min="2" max="30" value="8">
+      </div>
+
+      <div class="subhead">🌌 背景</div>
+      <div class="field">
+        <label><b>パターン</b></label>
+        <div class="seg" id="bgSeg">
+          <button data-v="rays" class="on">虹の放射</button>
+          <button data-v="gold">金の放射</button>
+          <button data-v="pink">ピンク放射</button>
+          <button data-v="night">ナイト</button>
+          <button data-v="speed">集中線</button>
+          <button data-v="spiral">虹うずまき</button>
+          <button data-v="burst">虹バースト</button>
+          <button data-v="rings">虹リング</button>
+          <button data-v="custom">色じゆう放射</button>
+        </div>
+      </div>
+      <div id="bgCustomWrap" style="display:none">
+        <div class="field">
+          <label><b>いろ</b><span id="bgHueVal">330°</span></label>
+          <input type="range" id="bgHue" min="0" max="360" value="330"
+            style="background:linear-gradient(90deg,hsl(0 100% 55%),hsl(60 100% 55%),hsl(120 100% 45%),hsl(180 100% 45%),hsl(240 100% 60%),hsl(300 100% 55%),hsl(360 100% 55%));border-radius:8px;height:14px;-webkit-appearance:none;appearance:none">
+        </div>
+        <div class="field">
+          <label><b>彩度</b><span id="bgSatVal">100%</span></label>
+          <input type="range" id="bgSat" min="10" max="100" value="100">
+        </div>
+      </div>
+      <div class="field">
+        <label><b>速さ</b><span id="bgSpeedVal">1.0</span></label>
+        <input type="range" id="bgSpeed" min="20" max="300" value="100">
+      </div>
+
+      <div class="subhead">🕺 被写体の動き</div>
+      <div class="field">
+        <label><b>パターン</b></label>
+        <div class="seg" id="moveSeg">
+          <button data-v="bounce" class="on">ぽよん</button>
+          <button data-v="pulse">ドキドキ</button>
+          <button data-v="swing">ゆらゆら</button>
+          <button data-v="shake">ガタガタ</button>
+          <button data-v="none">なし</button>
+        </div>
+      </div>
+      <div class="field">
+        <label><b>速さ</b><span id="moveSpeedVal">1.0</span></label>
+        <input type="range" id="moveSpeed" min="30" max="300" value="100">
+      </div>
+
+      <div class="subhead">🎆 追加エフェクト</div>
+      <div class="field">
+        <div class="chkgrid">
+          <label class="chk"><input type="checkbox" id="fx_confetti" checked><span>紙ふぶき</span></label>
+          <label class="chk"><input type="checkbox" id="fx_flash" checked><span>フラッシュ</span></label>
+          <label class="chk"><input type="checkbox" id="fx_stars"><span>流れ星</span></label>
+          <label class="chk"><input type="checkbox" id="fx_hearts"><span>ハートの雨</span></label>
+          <label class="chk"><input type="checkbox" id="fx_rings"><span>虹の波動</span></label>
+          <label class="chk"><input type="checkbox" id="fx_bolt"><span>稲妻</span></label>
+          <label class="chk"><input type="checkbox" id="fx_tint"><span>虹色フィルター</span></label>
+        </div>
+      </div>
+
+      <div class="subhead">⏱️ 全体</div>
+      <div class="field">
+        <label><b>演出スピード</b><span id="speedVal">1.0</span></label>
+        <input type="range" id="speed" min="30" max="250" value="100">
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><span class="step">3</span>テキスト</h2>
+      <div class="field">
+        <label><b>テキスト</b>（改行OK）</label>
+        <textarea id="capText" maxlength="60" rows="2"
+          style="width:100%;resize:vertical;background:#120a20;border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:9px 10px;font-family:inherit;font-size:14px;line-height:1.4">BONUS!!</textarea>
+      </div>
+      <div class="field">
+        <label><b>テキストの色</b></label>
+        <div class="seg" id="txtStyleSeg">
+          <button data-v="gold" class="on">ゴールド</button>
+          <button data-v="rainbow">レインボー</button>
+          <button data-v="white">しろ</button>
+          <button data-v="pink">ピンク</button>
+          <button data-v="custom">じゆう</button>
+        </div>
+      </div>
+      <div class="field">
+        <label><b>いろ調整バー</b>（動かすと「じゆう」になります）<span id="txtHueVal">50°</span></label>
+        <input type="range" id="txtHue" min="0" max="360" value="50"
+          style="background:linear-gradient(90deg,hsl(0 100% 55%),hsl(60 100% 55%),hsl(120 100% 45%),hsl(180 100% 45%),hsl(240 100% 60%),hsl(300 100% 55%),hsl(360 100% 55%));border-radius:8px;height:14px;-webkit-appearance:none;appearance:none">
+      </div>
+      <div class="field">
+        <label><b>フォント</b></label>
+        <div class="seg" id="fontSeg">
+          <button data-v="reggae" class="on">激アツ</button>
+          <button data-v="pop">ポップ</button>
+          <button data-v="dot">ドット</button>
+          <button data-v="maru">まる字</button>
+          <button data-v="mincho">明朝</button>
+          <button data-v="fude">毛筆</button>
+          <button data-v="ukidashi">うきだし</button>
+          <button data-v="deco">デコ</button>
+          <button data-v="marker">マーカー</button>
+          <button data-v="rock">ロック</button>
+          <button data-v="gokubuto">ごくぶと</button>
+          <button data-v="tegaki">てがき</button>
+        </div>
+      </div>
+      <div class="field">
+        <label><b>テキストの大きさ</b><span id="txtSizeVal">100%</span></label>
+        <input type="range" id="txtSize" min="40" max="500" value="100">
+      </div>
+      <div class="field">
+        <label><b>テキストの回転</b><span id="txtRotVal">0°</span></label>
+        <input type="range" id="txtRot" min="-180" max="180" value="0">
+      </div>
+      <div class="hint">テキストはプレビュー上でドラッグして自由な位置に動かせます。</div>
+    </div>
+
+    <div class="card">
+      <h2><span class="step">4</span>デコる</h2>
+      <div class="field">
+        <label><b>はだの色</b>（人の絵文字に反映されます）</label>
+        <div class="seg" id="toneSeg">
+          <button data-v="" class="on">✋</button>
+          <button data-v="&#x1F3FB;">✋🏻</button>
+          <button data-v="&#x1F3FC;">✋🏼</button>
+          <button data-v="&#x1F3FD;">✋🏽</button>
+          <button data-v="&#x1F3FE;">✋🏾</button>
+          <button data-v="&#x1F3FF;">✋🏿</button>
+        </div>
+      </div>
+      <div class="field">
+        <label><b>スタンプシャワー</b>（タップでON/OFF・<b>4つまで</b>）</label>
+        <div class="stampgrid" id="stamps"></div>
+        <div class="field" style="margin-top:10px">
+          <label><b>えらんでいるスタンプ</b></label>
+          <div class="stamp-selected-row" id="stampSelected"></div>
+          <div class="rowbtns" style="margin-top:8px">
+            <button class="btn sub" id="stampClearBtn">🗑 スタンプをクリア</button>
+          </div>
+        </div>
+        <div class="hint">つかえる絵文字ぜんぶ入り（👳ターバンの人などの人物・国旗もあります）。えらんだ絵文字がキラキラと同じように画面いっぱいにポワポワ現れます（被写体のうしろ）。えらべるのは<b>4つまで</b>。上限に達したら、どれかを外してから次を選んでください。</div>
+      </div>
+      <div class="field">
+        <label><b>スタンプの量</b><span id="stampAmtVal">30</span></label>
+        <input type="range" id="stampAmt" min="0" max="80" value="30">
+      </div>
+      <div class="field">
+        <label><b>スタンプの速さ</b><span id="stampSpeedVal">1.0</span></label>
+        <input type="range" id="stampSpeed" min="20" max="300" value="100">
+      </div>
+      <div class="field">
+        <label><b>スタンプの大きさ</b><span id="stampSizeVal">1.0</span></label>
+        <input type="range" id="stampSize" min="40" max="260" value="100">
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><span class="step">5</span>キラキラ <span style="font-size:11px;color:#8f7fb5">（被写体のうしろで光ります）</span></h2>
+      <div class="field">
+        <label><b>かたち</b></label>
+        <div class="seg" id="sparkShapeSeg">
+          <button data-v="svg" class="on">キラキラ</button>
+          <button data-v="diamond">ダイヤ</button>
+          <button data-v="cross">クロス</button>
+          <button data-v="dot">まる</button>
+        </div>
+      </div>
+      <div class="field">
+        <label><b>いろ</b></label>
+        <div class="seg" id="sparkColorSeg">
+          <button data-v="rainbow" class="on">レインボー</button>
+          <button data-v="white">しろ</button>
+          <button data-v="gold">ゴールド</button>
+          <button data-v="pink">ピンク</button>
+        </div>
+      </div>
+      <div class="field">
+        <label><b>量</b><span id="glitVal">150</span></label>
+        <input type="range" id="glit" min="0" max="300" value="150">
+      </div>
+      <div class="field">
+        <label><b>速さ</b><span id="sparkSpeedVal">1.0</span></label>
+        <input type="range" id="sparkSpeed" min="20" max="300" value="100">
+      </div>
+      <div class="field">
+        <label><b>大きさ</b><span id="sparkSizeVal">1.0</span></label>
+        <input type="range" id="sparkSize" min="40" max="260" value="100">
+      </div>
+    </div>
+
+  </aside>
+</main>
+
+<!-- ===== cutout editor modal ===== -->
+<div id="cutModal">
+  <div class="cutbox">
+    <h3>✂ 切り抜きエディタ</h3>
+    <div class="cutwrap"><canvas id="cutCanvasView"></canvas><div id="brushCursor"></div><div id="bucketCursor">🪣</div></div>
+
+    <div class="cut-section cut-auto">
+      <div class="cut-section-title">🪄 まずはこれ：自動で背景を消す</div>
+      <div class="field">
+        <label><b>消しやすさ</b><span id="tolVal">40</span></label>
+        <input type="range" id="tol" min="5" max="120" value="40">
+      </div>
+      <button class="btn" id="autoCutBtn" style="width:100%">背景を自動で消す</button>
+    </div>
+
+    <div class="cut-section">
+      <div class="cut-section-title">✋ 手で仕上げる</div>
+      <div class="toolgrid" id="brushSeg">
+        <button data-v="erase" class="on" data-color="#ff2d78"><span class="ticon">🧽</span>消す</button>
+        <button data-v="restore" data-color="#39d97a"><span class="ticon">🖌</span>戻す</button>
+        <button data-v="bucket" data-color="#ffcf3f"><span class="ticon">🪣</span>バケツ消し</button>
+      </div>
+      <div id="toolHint" class="hint"></div>
+      <div class="field" id="brushSizeWrap">
+        <label><b>ブラシの大きさ</b><span id="brushVal">30</span></label>
+        <input type="range" id="brushSize" min="6" max="90" value="30">
+      </div>
+      <div class="field" id="bucketTolWrap" style="display:none">
+        <label><b>バケツの消しやすさ</b><span id="bucketTolVal">40</span></label>
+        <input type="range" id="bucketTol" min="5" max="120" value="40">
+      </div>
+    </div>
+
+    <div class="cut-footer">
+      <button class="btn sub" id="undoCutBtn">↶ 戻る</button>
+      <button class="btn sub" id="resetCutBtn">🗑 最初から</button>
+      <button class="btn cut-done" id="doneCutBtn">✔ これでOK</button>
+    </div>
+  </div>
+</div>
+
+<footer>ドパドパめぇ〜かぁ〜 — すべてブラウザ内で処理。画像はどこにも送信されません。</footer>
+
+<script>
+"use strict";
+/* ================= state ================= */
+let W=720,H=720;
+const cv=document.getElementById('mainCanvas');
+const ctx=cv.getContext('2d');
+const S={
+  hasImage:false,
+  outline:'gold', outW:8,
+  bg:'rays', bgSpeed:1,
+  move:'bounce', moveSpeed:1,
+  glitter:150, sparkSpeed:1, sparkSize:1,
+  sparkShape:'svg', sparkColor:'rainbow',
+  font:'reggae',
+  fx:{confetti:true,flash:true,stars:false,hearts:false,rings:false,bolt:false,tint:false},
+  stampSet:new Set(), stampAmt:30, stampSpeed:1, stampSize:1,
+  text:'BONUS!!', txtStyle:'gold', txtSize:1, txtHue:50, txtRot:0,
+  bgHue:330, bgSat:1,
+  txtX:360, txtY:662,
+  subX:0, subY:0, subScaleUser:1, subRot:0,
+  speed:1,
+  recording:false, capturing:false,
+  started:false,
+};
+let srcCanvas=null, cutCanvas=null;
+let silCanvas=null, silCtx=null, tintCanvas=null, tintCtx=null;
+let baseScale=1;
+
+/* ================= tiny helpers ================= */
+const $=id=>document.getElementById(id);
+function mkCanvas(w,h){const c=document.createElement('canvas');c.width=w;c.height=h;return c;}
+function segInit(id,onChange){
+  const el=$(id);
+  el.addEventListener('click',e=>{
+    const b=e.target.closest('button'); if(!b)return;
+    el.querySelectorAll('button').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on'); onChange(b.dataset.v);
+  });
+}
+function segSet(id,v){
+  $(id).querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.v===v));
+}
+function frac(x){return x-Math.floor(x);}
+function prand(i,seed){return frac(Math.sin(i*127.1+seed*311.7)*43758.5453);}
+
+/* ================= aspect ================= */
+function setAspect(v){
+  const map={'16:9':[960,540],'1:1':[720,720],'9:16':[540,960]};
+  [W,H]=map[v];
+  cv.width=W; cv.height=H;
+  if(v==='9:16'){
+    cv.style.width='auto'; cv.style.maxWidth='100%'; cv.style.height='min(72vh, 640px)';
+  }else{
+    cv.style.width='100%'; cv.style.height='auto'; cv.style.maxWidth=''; 
+  }
+  if(cutCanvas){
+    baseScale=Math.min((H*0.55)/cutCanvas.height,(W*0.6)/cutCanvas.width);
+  }
+  S.subX=0; S.subY=0;
+  applyTxtPreset();
+  syncPosSliders();
+}
+function applyTxtPreset(){
+  S.txtX=W/2;
+  S.txtY=H-58;
+}
+function syncPosSliders(){
+  $('subXr').value=Math.round(S.subX); $('subXVal').textContent=Math.round(S.subX);
+  $('subYr').value=Math.round(S.subY); $('subYVal').textContent=Math.round(S.subY);
+}
+$('aspect').addEventListener('change',e=>{
+  if(S.recording){e.target.value=currentAspect;return;}
+  currentAspect=e.target.value;
+  setAspect(currentAspect);
+});
+let currentAspect='1:1';
+setAspect('1:1');
+
+/* ================= UI bindings ================= */
+segInit('outlineSeg',v=>S.outline=v);
+segInit('bgSeg',v=>{
+  S.bg=v;
+  $('bgCustomWrap').style.display = v==='custom' ? 'block' : 'none';
+});
+segInit('moveSeg',v=>S.move=v);
+segInit('txtStyleSeg',v=>S.txtStyle=v);
+segInit('sparkShapeSeg',v=>S.sparkShape=v);
+segInit('fontSeg',v=>S.font=v);
+const FONT_MAP={
+  reggae:"'Reggae One'",
+  pop:"'Mochiy Pop One'",
+  dot:"'DotGothic16'",
+  maru:"'Hachi Maru Pop'",
+  mincho:"'Shippori Mincho'",
+  fude:"'Yuji Mai'",
+  ukidashi:"'Rampart One'",
+  deco:"'Kaisei Decol'",
+  marker:"'Yusei Magic'",
+  rock:"'RocknRoll One'",
+  gokubuto:"'Dela Gothic One'",
+  tegaki:"'Zen Kurenaido'",
+};
+// preload fonts so the canvas can use them right away
+if(document.fonts&&document.fonts.load){
+  Object.values(FONT_MAP).forEach(f=>document.fonts.load(`20px ${f}`).catch(()=>{}));
+}
+segInit('sparkColorSeg',v=>{S.sparkColor=v;sparkles.length=0;});
+function bindRange(id,valId,fn,fmt){
+  $(id).addEventListener('input',e=>{const v=+e.target.value;fn(v);$(valId).textContent=fmt(v);});
+}
+bindRange('outW','outWVal',v=>S.outW=v,v=>v+'px');
+bindRange('glit','glitVal',v=>S.glitter=v,v=>v);
+bindRange('sparkSpeed','sparkSpeedVal',v=>S.sparkSpeed=v/100,v=>(v/100).toFixed(1));
+bindRange('sparkSize','sparkSizeVal',v=>S.sparkSize=v/100,v=>(v/100).toFixed(1));
+bindRange('speed','speedVal',v=>S.speed=v/100,v=>(v/100).toFixed(1));
+bindRange('bgSpeed','bgSpeedVal',v=>S.bgSpeed=v/100,v=>(v/100).toFixed(1));
+bindRange('moveSpeed','moveSpeedVal',v=>S.moveSpeed=v/100,v=>(v/100).toFixed(1));
+bindRange('subScale','subScaleVal',v=>S.subScaleUser=v/100,v=>v+'%');
+bindRange('subRot','subRotVal',v=>S.subRot=v*Math.PI/180,v=>v+'°');
+bindRange('txtSize','txtSizeVal',v=>S.txtSize=v/100,v=>v+'%');
+$('txtHue').addEventListener('input',e=>{
+  S.txtHue=+e.target.value;
+  $('txtHueVal').textContent=S.txtHue+'°';
+  S.txtStyle='custom';
+  segSet('txtStyleSeg','custom');
+});
+bindRange('txtRot','txtRotVal',v=>S.txtRot=v*Math.PI/180,v=>v+'°');
+$('bgHue').addEventListener('input',e=>{
+  S.bgHue=+e.target.value;
+  $('bgHueVal').textContent=S.bgHue+'°';
+});
+bindRange('bgSat','bgSatVal',v=>S.bgSat=v/100,v=>v+'%');
+bindRange('stampAmt','stampAmtVal',v=>S.stampAmt=v,v=>v);
+bindRange('stampSpeed','stampSpeedVal',v=>S.stampSpeed=v/100,v=>(v/100).toFixed(1));
+bindRange('stampSize','stampSizeVal',v=>S.stampSize=v/100,v=>(v/100).toFixed(1));
+bindRange('subXr','subXVal',v=>S.subX=v,v=>v);
+bindRange('subYr','subYVal',v=>S.subY=v,v=>v);
+$('capText').addEventListener('input',e=>S.text=e.target.value);
+['confetti','flash','stars','hearts','rings','bolt','tint'].forEach(k=>{
+  $('fx_'+k).addEventListener('change',e=>S.fx[k]=e.target.checked);
+});
+$('resetPos').addEventListener('click',()=>{S.subX=0;S.subY=0;syncPosSliders();});
+
+/* ================= stamps: emoji repertoire, organized by genre ================= */
+function rangeChars(a,b){const l=[];for(let c=a;c<=b;c++)l.push(String.fromCodePoint(c));return l;}
+// All country/region flags (regional indicator pairs)
+const FLAG_CODES=('JP US KR CN TW HK MO GB FR IT DE ES PT RU UA PL CZ SK HU RO BG NL BE LU CH AT SE NO DK FI IS IE GR TR IL SA AE QA KW IQ IR JO LB IN PK BD LK NP BT TH VN PH ID MY SG BN MM KH LA MN KZ UZ BR AR CL PE CO VE MX CU JM CA AU NZ FJ PG EG ZA NG KE MA DZ TN ET GH CI SN TZ UG ZW MZ AO CM CD GT HN NI CR PA DO HT BO PY UY EC SV BS TT BB MT CY EE LV LT BY MD RS HR SI BA MK AL ME GE AM AZ AF SY YE OM BH PS MV TL FM MH PW WS TO VU SB KI NR TV CK NU AS GU MP PR VI GL FO GI IM JE GG AD MC SM VA LI').split(' ');
+const FLAG_EMOJIS=FLAG_CODES.map(code=>String.fromCodePoint(0x1F1E6+code.charCodeAt(0)-65,0x1F1E6+code.charCodeAt(1)-65));
+
+const STAMP_CATEGORIES=[
+ {name:'かお・きもち', emojis:[...rangeChars(0x1F600,0x1F644),...rangeChars(0x1F910,0x1F92F),...rangeChars(0x1F970,0x1F97A),...rangeChars(0x1FAE0,0x1FAE8),'🫠','🫥','🫡','🫤','🥹','👹','👺','💀','☠️','👻','👽','👾','🤖','🎃','😈','👿','🧟','🧟‍♀️']},
+ {name:'ひと', emojis:['👶','🧒','👦','👧','🧑','👨','👩','🧓','👴','👵','👸','🤴','🥷','🦸','🦸‍♂️','🦸‍♀️','🦹','🦹‍♂️','🦹‍♀️','🧙','🧙‍♂️','🧙‍♀️','🧚','🧚‍♂️','🧚‍♀️','🧛','🧛‍♂️','🧛‍♀️','🧜‍♂️','🧜‍♀️','🧞','🧞‍♂️','🧞‍♀️','👯','💃','🕺','🤳','🙋','🙆','🙅','🤷','🧎','🏃','🚶','💁','🤦','👮','👮‍♂️','👮‍♀️','👷','👷‍♂️','👷‍♀️','👳','👳‍♂️','👳‍♀️','🧕','🕵️','🕵️‍♂️','🕵️‍♀️','🤵','🤵‍♂️','🤵‍♀️','👰','👰‍♂️','👰‍♀️','🫅','👼','🎅','🤶','🧑‍🎄','🤱','🫄','🫃','🧑‍🍳','🧑‍⚕️','🧑‍🏫','🧑‍🚒','🧑‍🚀','🧑‍🎤','🧑‍💻','🧑‍🎨','🧑‍✈️','🧑‍🌾','🧑‍🔧','🧑‍⚖️','🧑‍🎓','🧑‍🦯','🧑‍🦼','🧑‍🦽',...rangeChars(0x1F930,0x1F939)]},
+ {name:'て・ジェスチャー', emojis:['👍','👎','👏','🙌','🫶','🙏','✌️','🤟','🤘','👌','🤙','💪','🖐️','🫰','👀','👄','💋','👊','✊','🤝','👋','🫵','🫱','🫲','👆','👇','👈','👉','☝️','✋','🤚',...rangeChars(0x1FAF0,0x1FAF8)]},
+ {name:'ハート', emojis:['❤️','🧡','💛','💚','💙','💜','🖤','🤍','🤎','💖','💗','💓','💞','💕','💘','💝','💔','❣️','💟','❤️‍🔥','❤️‍🩹','💌','💋']},
+ {name:'キラキラ・おいわい', emojis:['⭐','🌟','✨','💫','⚡','🔥','💥','🎉','🎊','🎈','🎁','🎀','👑','💎','🏆','🥇','🥈','🥉','🎯','🎰','🎲','🃏','🎮','🕹️','🪩','🪄','🔮','🎌','🏁','🚩','🎏','🎐','㊗️','🈹','💯','🉐','🎆','🎇','🧨','🪅','🎪']},
+ {name:'どうぶつ', emojis:[...rangeChars(0x1F400,0x1F43E),...rangeChars(0x1F980,0x1F9AE),'🦣','🦤','🦭','🪶','🪳','🪱','🪰','🪲','🦫','🦬','🦧','🦮','🐕‍🦺']},
+ {name:'しぜん・てんき', emojis:[...rangeChars(0x1F300,0x1F32C),'❄️','☃️','⛄','🫧','🌍','🌈','🪐','☄️','🌪️','🌫️','🌬️','🪷','🪴','🍃','🌱','☘️']},
+ {name:'たべもの', emojis:[...rangeChars(0x1F32D,0x1F37F),...rangeChars(0x1F950,0x1F96F),...rangeChars(0x1FAD0,0x1FAD9),'🧊','🥤','🧋','☕','🍵','🧉','🍶','🍾']},
+ {name:'スポーツ・あそび', emojis:['⚽','🏀','⚾','🥎','🎾','🏐','🏈','🏉','🏓','🏸','🥊','🥋','⛳','🎳','🛹','🛼','⛸️','🏄','🏊','🚴','⚔️','🏹','🎣','🥏','🏂','🏋️','🤸','🤼','🤾','🚣','🧗','🏇','⛷️','🏆','🎽','🥅','🪀','🪁','♟️','🎱','🎮','🧩']},
+ {name:'のりもの', emojis:[...rangeChars(0x1F680,0x1F6C5),'🛺','🛞','🛷','🛶']},
+ {name:'ふくそう・こもの', emojis:['👑','🎩','🧢','👒','🎓','⛑️','💍','👓','🕶️','🥽','👔','👕','👖','🧣','🧤','🧥','🧦','👗','👘','🥻','🩱','🩲','🩳','👙','👚','👛','👜','👝','🎒','👞','👟','🥾','🥿','👠','👡','🩰','👢','💄','💅']},
+ {name:'からだ・けんこう', emojis:['🫀','🫁','🦴','🦷','🦵','🦶','👂','👃','🧠','🦾','🦿','🩸','💉','💊','🩹','🩺','🌡️','🧬','🦠','🔬','🧪','⚕️','🚑','🏥']},
+ {name:'ぶき・きけん', emojis:['🔪','🗡️','⚔️','🛡️','🏹','🪃','💣','🧨','🔫','⚰️','⚱️','🪦','☠️','💀']},
+ {name:'いえ・たてもの', emojis:['🏠','🏡','🏢','🏣','🏤','🏥','🏦','🏨','🏩','🏪','🏫','🏬','🏭','🏯','🏰','💒','🗼','🗽','⛪','🕌','🛕','🕍','⛩️','🌋','🗻','🏕️','🏖️','🏜️','🏝️','🏞️','🎠','🎡','🎢','💈','🎪','🚉','🌉','🗾']},
+ {name:'どうぐ・せいかつ', emojis:['💰','💵','💴','💶','💷','🪙','💳','🔔','🔕','📸','📷','📱','💻','🖥️','⌨️','🖨️','☎️','📞','📟','📺','📻','🔑','🗝️','🔨','🪓','⚙️','🧲','🔫','🧨','🧰','🪛','🔧','🔩','⛓️','🧱','🪜','🧸','🪆','🪄','🔮','📿','🧿','💈','⚗️','🔭','🔬','📡','💡','🔦','🏮','🪔','📔','📕','📖','📚','✏️','🖊️','🖋️','🖌️','📝','💼','🗂️','📅','📌','✂️','🔒','🔓']},
+ {name:'おんがく・げいじゅつ', emojis:['🎵','🎶','🎤','🎧','🎸','🎻','🎹','🥁','🎺','🎷','🪕','🪗','🎨','🎭','🖼️','🎬','📽️','🎞️']},
+ {name:'きごう・やじるし', emojis:['⭐','💯','❗','❓','❕','❔','💢','💤','💦','💨','🆗','🆕','🆒','🆓','🆙','🔞','🔥','⚠️','🚫','✅','❌','➕','➖','➗','✖️','♻️','🔄','🔁','🔂','▶️','⏸️','⏯️','⏹️','⏺️','⏭️','⏮️','⏫','⏬','⬆️','⬇️','⬅️','➡️','↗️','↘️','↙️','↖️','↕️','↔️','🔀','♈','♉','♊','♋','♌','♍','♎','♏','♐','♑','♒','♓']},
+ {name:'いろ・かたち', emojis:['🔴','🟠','🟡','🟢','🔵','🟣','🟤','⚫','⚪','🟥','🟧','🟨','🟩','🟦','🟪','🟫','⬛','⬜','◼️','◻️','◾','◽','▪️','▫️','🔶','🔷','🔸','🔹','🔺','🔻','💠','🔘','🔳','🔲']},
+ {name:'すうじ', emojis:['0️⃣','1️⃣','2️⃣','3️⃣','4️⃣','5️⃣','6️⃣','7️⃣','8️⃣','9️⃣','🔟','#️⃣','*️⃣','🔢']},
+ {name:'国旗', emojis:FLAG_EMOJIS},
+];
+// keep each emoji in only its first category so nothing appears twice in the grid
+(function dedupeCategories(){
+  const seen=new Set();
+  for(const cat of STAMP_CATEGORIES){
+    cat.emojis=cat.emojis.filter(em=>{
+      if(seen.has(em))return false;
+      seen.add(em);return true;
+    });
+  }
+})();
+const stampGrid=$('stamps');
+const stampParts=[];
+/* --- skin tone (emoji modifier) support --- */
+let stampTone='';
+// code points that accept skin-tone modifiers (hands & people)
+const TONE_RANGES=[
+ [0x1F385,0x1F385],[0x1F3C2,0x1F3C4],[0x1F3C7,0x1F3C7],[0x1F3CA,0x1F3CC],
+ [0x1F442,0x1F443],[0x1F446,0x1F450],[0x1F466,0x1F478],[0x1F47C,0x1F47C],
+ [0x1F481,0x1F483],[0x1F485,0x1F487],[0x1F48F,0x1F48F],[0x1F491,0x1F491],
+ [0x1F4AA,0x1F4AA],[0x1F574,0x1F575],[0x1F57A,0x1F57A],[0x1F590,0x1F590],
+ [0x1F595,0x1F596],[0x1F645,0x1F647],[0x1F64B,0x1F64F],[0x1F6A3,0x1F6A3],
+ [0x1F6B4,0x1F6B6],[0x1F6C0,0x1F6C0],[0x1F6CC,0x1F6CC],[0x1F90C,0x1F90C],
+ [0x1F90F,0x1F90F],[0x1F918,0x1F91F],[0x1F926,0x1F926],[0x1F930,0x1F939],
+ [0x1F93C,0x1F93E],[0x1F977,0x1F977],[0x1F9B5,0x1F9B6],[0x1F9B8,0x1F9B9],
+ [0x1F9BB,0x1F9BB],[0x1F9CD,0x1F9DD],[0x1FAC3,0x1FAC5],[0x1FAF0,0x1FAF8]
+];
+function supportsTone(em){
+  const cp=em.codePointAt(0);
+  for(const [a,b] of TONE_RANGES)if(cp>=a&&cp<=b)return true;
+  return false;
+}
+function toneApplied(em){
+  if(!stampTone || !supportsTone(em))return em;
+  // Insert right after the FIRST code point — appending at the very end
+  // breaks ZWJ/gendered sequences (e.g. cook, merperson) and shows up as
+  // a stray colored square instead of a properly tinted emoji.
+  const cps=[...em];
+  cps.splice(1,0,stampTone);
+  return cps.join('');
+}
+/* Emoji sprite cache — fillText() has to re-shape and rasterize a
+   full-color emoji glyph from scratch every single call, which is one
+   of the more expensive things a canvas can do. With dozens of stamps
+   redrawn 60x/sec that cost adds up and can drop frames, which shows
+   up as stamps looking like they're stuttering/flickering rather than
+   fading smoothly. Rendering each glyph once to an offscreen canvas
+   and reusing it via drawImage() turns that into a cheap bitmap blit. */
+const emojiSpriteCache=new Map();
+const SPRITE_REF=88;
+function getEmojiSprite(text){
+  let spr=emojiSpriteCache.get(text);
+  if(spr)return spr;
+  const c=document.createElement('canvas');
+  c.width=c.height=SPRITE_REF;
+  const cx=c.getContext('2d');
+  cx.font=`${Math.round(SPRITE_REF*0.82)}px 'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji',sans-serif`;
+  cx.textAlign='center';cx.textBaseline='middle';
+  cx.fillText(text,SPRITE_REF/2,SPRITE_REF/2+SPRITE_REF*0.04);
+  if(emojiSpriteCache.size>300)emojiSpriteCache.delete(emojiSpriteCache.keys().next().value);
+  emojiSpriteCache.set(text,c);
+  return c;
+}
+segInit('toneSeg',v=>{
+  stampTone=v;
+  // repaint only the buttons that can change
+  for(const b of stampGrid.querySelectorAll('button')){
+    const base=b.dataset.base;
+    if(supportsTone(base))b.textContent=toneApplied(base);
+  }
+  renderSelectedStamps();
+});
+function makeStampButton(em,on){
+  const b=document.createElement('button');
+  b.type='button'; b.dataset.base=em; b.textContent=toneApplied(em);
+  if(on)b.classList.add('on');
+  b.addEventListener('click',()=>toggleStamp(em,b));
+  return b;
+}
+// build the categorized grid in chunks so the page stays snappy
+(function buildGrid(ci,ei){
+  const frag=document.createDocumentFragment();
+  let steps=0;
+  while(ci<STAMP_CATEGORIES.length && steps<140){
+    const cat=STAMP_CATEGORIES[ci];
+    if(ei===0){
+      const h=document.createElement('div');
+      h.className='cat-title'; h.textContent=cat.name;
+      frag.appendChild(h);
+    }
+    const end=Math.min(ei+140,cat.emojis.length);
+    for(;ei<end;ei++){frag.appendChild(makeStampButton(cat.emojis[ei],false));steps++;}
+    if(ei>=cat.emojis.length){ci++;ei=0;}
+  }
+  stampGrid.appendChild(frag);
+  if(ci<STAMP_CATEGORIES.length)requestAnimationFrame(()=>buildGrid(ci,ei));
+  else{ refreshStampCap(); renderSelectedStamps(); }
+})(0,0);
+function purgeStampParts(em){
+  for(let i=stampParts.length-1;i>=0;i--)if(stampParts[i].em===em)stampParts.splice(i,1);
+}
+function renderSelectedStamps(){
+  const wrap=$('stampSelected');
+  wrap.innerHTML='';
+  if(!S.stampSet.size){
+    const e=document.createElement('span');
+    e.className='empty'; e.textContent='まだ選んでいません';
+    wrap.appendChild(e);
+    return;
+  }
+  for(const em of S.stampSet){
+    const chip=document.createElement('span');
+    chip.className='stamp-chip';
+    chip.innerHTML=`<span>${toneApplied(em)}</span><span class="x">✕</span>`;
+    chip.addEventListener('click',()=>{
+      for(const b of stampGrid.querySelectorAll('button')){
+        if(b.dataset.base===em){toggleStamp(em,b);return;}
+      }
+      S.stampSet.delete(em); purgeStampParts(em); refreshStampCap(); renderSelectedStamps();
+    });
+    wrap.appendChild(chip);
+  }
+}
+$('stampClearBtn').addEventListener('click',()=>{
+  S.stampSet.clear();
+  stampParts.length=0;
+  stampGrid.querySelectorAll('button.on').forEach(b=>b.classList.remove('on'));
+  refreshStampCap();
+  renderSelectedStamps();
+});
+const STAMP_MAX=4;
+function refreshStampCap(){
+  const full=S.stampSet.size>=STAMP_MAX;
+  stampGrid.querySelectorAll('button').forEach(b=>{
+    b.disabled = full && !S.stampSet.has(b.dataset.base);
+  });
+}
+function toggleStamp(em,btn){
+  if(S.stampSet.has(em)){
+    S.stampSet.delete(em);
+    btn.classList.remove('on');
+    purgeStampParts(em);
+  }else{
+    if(S.stampSet.size>=STAMP_MAX)return; // full — remove one first
+    S.stampSet.add(em);
+    btn.classList.add('on');
+  }
+  refreshStampCap();
+  renderSelectedStamps();
+}
+function spawnStampPart(){
+  const arr=[...S.stampSet];
+  if(!arr.length)return;
+  stampParts.push({
+    x:Math.random()*W, y:Math.random()*H,
+    age:0, duration:4.5+Math.random()*3.5, // real seconds — never scaled by speed sliders
+    size:24+Math.random()*30,
+    em:arr[(Math.random()*arr.length)|0],
+    rot:(Math.random()-.5)*0.8, vr:(Math.random()-.5)*0.03,
+    vx:(Math.random()-.5)*0.6, vy:-0.15-Math.random()*0.5,
+  });
+}
+// Ease-in / hold / ease-out — quick fade at the edges, steady full
+// opacity through the middle. A plain sine hump (the old approach)
+// is ALWAYS rising or falling and never holds still, so with many
+// particles cycling it reads as constant flickering.
+function holdCurve(p, fadeFrac){
+  if(p<fadeFrac)return p/fadeFrac;
+  if(p>1-fadeFrac)return (1-p)/fadeFrac;
+  return 1;
+}
+
+/* ================= drag interaction on preview ================= */
+let dragging=null, lastCap=null;
+function canvasPoint(e){
+  const r=cv.getBoundingClientRect();
+  return {x:(e.clientX-r.left)*W/r.width, y:(e.clientY-r.top)*H/r.height};
+}
+cv.addEventListener('pointerdown',e=>{
+  const p=canvasPoint(e);
+  if(lastCap && S.text.trim() &&
+     Math.abs(p.x-lastCap.x)<lastCap.w/2 && Math.abs(p.y-lastCap.y)<lastCap.h/2){
+    dragging={type:'text',lastX:p.x,lastY:p.y};
+  }else if(S.hasImage){
+    dragging={type:'subject',lastX:p.x,lastY:p.y};
+  }else{
+    return;
+  }
+  cv.setPointerCapture(e.pointerId);
+  cv.classList.add('grabbing');
+});
+cv.addEventListener('pointermove',e=>{
+  if(!dragging)return;
+  const p=canvasPoint(e);
+  const dx=p.x-dragging.lastX, dy=p.y-dragging.lastY;
+  dragging.lastX=p.x; dragging.lastY=p.y;
+  if(dragging.type==='text'){
+    S.txtX+=dx; S.txtY+=dy;
+  }else{
+    S.subX+=dx; S.subY+=dy;
+    syncPosSliders();
+  }
+});
+['pointerup','pointercancel'].forEach(ev=>cv.addEventListener(ev,()=>{
+  dragging=null; cv.classList.remove('grabbing');
+}));
+
+/* ================= image load ================= */
+const drop=$('drop'), fileInput=$('fileInput');
+drop.addEventListener('click',()=>fileInput.click());
+fileInput.addEventListener('change',e=>{if(e.target.files[0])loadFile(e.target.files[0]);});
+['dragover','dragenter'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add('over');}));
+['dragleave','drop'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.remove('over');}));
+drop.addEventListener('drop',e=>{const f=e.dataTransfer.files[0];if(f)loadFile(f);});
+document.addEventListener('paste',e=>{
+  const items=e.clipboardData&&e.clipboardData.items;
+  if(!items)return;
+  for(const it of items){
+    if(it.type.startsWith('image/')){loadFile(it.getAsFile());break;}
+  }
+});
+
+function loadFile(file){
+  const url=URL.createObjectURL(file);
+  const img=new Image();
+  img.onload=()=>{
+    URL.revokeObjectURL(url);
+    const max=760;
+    const sc=Math.min(1,max/Math.max(img.width,img.height));
+    const w=Math.max(2,Math.round(img.width*sc)),h=Math.max(2,Math.round(img.height*sc));
+    srcCanvas=mkCanvas(w,h);
+    srcCanvas.getContext('2d').drawImage(img,0,0,w,h);
+    cutCanvas=mkCanvas(w,h);
+    cutCanvas.getContext('2d').drawImage(srcCanvas,0,0);
+    silCanvas=mkCanvas(w,h); silCtx=silCanvas.getContext('2d');
+    tintCanvas=mkCanvas(w,h); tintCtx=tintCanvas.getContext('2d');
+    baseScale=Math.min((H*0.55)/h,(W*0.6)/w);
+    S.hasImage=true;
+    S.subX=0;S.subY=0;syncPosSliders();
+    $('emptyMsg').style.display='none';
+    $('recBtn').disabled=false; $('snapBtn').disabled=false;
+    $('openCut').disabled=false; $('resetPos').disabled=false;
+    autoCut(40);
+  };
+  img.onerror=()=>alert('画像を読み込めませんでした');
+  img.src=url;
+}
+function updateSil(){
+  silCtx.clearRect(0,0,silCanvas.width,silCanvas.height);
+  silCtx.drawImage(cutCanvas,0,0);
+  silCtx.globalCompositeOperation='source-in';
+  silCtx.fillStyle='#fff';
+  silCtx.fillRect(0,0,silCanvas.width,silCanvas.height);
+  silCtx.globalCompositeOperation='source-over';
+}
+
+/* ================= auto cutout ================= */
+function autoCut(tol){
+  if(!srcCanvas)return;
+  const w=srcCanvas.width,h=srcCanvas.height;
+  const cctx=cutCanvas.getContext('2d');
+  cctx.clearRect(0,0,w,h);
+  cctx.drawImage(srcCanvas,0,0);
+  const im=cctx.getImageData(0,0,w,h);
+  const d=im.data;
+  const corners=[0,(w-1)*4,(h-1)*w*4,((h-1)*w+w-1)*4].map(o=>[d[o],d[o+1],d[o+2]]);
+  const visited=new Uint8Array(w*h);
+  const t2=tol*tol*3;
+  const stack=[];
+  const near=(i,c)=>{
+    const dr=d[i*4]-c[0],dg=d[i*4+1]-c[1],db=d[i*4+2]-c[2];
+    return dr*dr+dg*dg+db*db<=t2;
+  };
+  function seed(x,y){
+    const i=y*w+x;
+    if(visited[i])return;
+    for(const c of corners){ if(near(i,c)){stack.push([i,c]);visited[i]=1;break;} }
+  }
+  for(let x=0;x<w;x++){seed(x,0);seed(x,h-1);}
+  for(let y=0;y<h;y++){seed(0,y);seed(w-1,y);}
+  while(stack.length){
+    const [i,c]=stack.pop();
+    d[i*4+3]=0;
+    const x=i%w,y=(i/w)|0;
+    const nb=[];
+    if(x>0)nb.push(i-1); if(x<w-1)nb.push(i+1);
+    if(y>0)nb.push(i-w); if(y<h-1)nb.push(i+w);
+    for(const n of nb){
+      if(!visited[n]&&near(n,c)){visited[n]=1;stack.push([n,c]);}
+    }
+  }
+  const a=new Uint8Array(w*h);
+  for(let i=0;i<w*h;i++)a[i]=d[i*4+3];
+  for(let y=1;y<h-1;y++)for(let x=1;x<w-1;x++){
+    const i=y*w+x;
+    if(a[i]>0){
+      let holes=0;
+      if(!a[i-1])holes++; if(!a[i+1])holes++; if(!a[i-w])holes++; if(!a[i+w])holes++;
+      if(holes)d[i*4+3]=Math.min(d[i*4+3],255-holes*55);
+    }
+  }
+  cctx.putImageData(im,0,0);
+  updateSil();
+}
+
+/* ================= cutout editor ================= */
+const modal=$('cutModal'), cutView=$('cutCanvasView');
+let brushMode='erase', brushSize=30, undoStack=[];
+$('openCut').addEventListener('click',()=>{
+  cutView.width=cutCanvas.width; cutView.height=cutCanvas.height;
+  redrawCutView(); undoStack=[];
+  selectTool(brushMode);
+  modal.classList.add('open');
+});
+$('doneCutBtn').addEventListener('click',()=>modal.classList.remove('open'));
+modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('open');});
+const TOOL_HINTS={
+  erase:'ドラッグしてなぞった部分を消します。',
+  restore:'消しすぎた部分をなぞると元の写真に戻せます。',
+  bucket:'消したい細かい部分をタップ。似た色でつながっている範囲だけをまとめて消します。',
+};
+function selectTool(v){
+  brushMode=v;
+  const btn=[...$('brushSeg').querySelectorAll('button')].find(b=>b.dataset.v===v);
+  const color=btn ? btn.dataset.color : '#ffcf3f';
+  $('brushSeg').querySelectorAll('button').forEach(b=>{
+    const on=b.dataset.v===v;
+    b.classList.toggle('on',on);
+    b.style.borderColor = on ? b.dataset.color : '';
+    b.style.boxShadow = on ? `0 0 0 2px ${b.dataset.color}55` : '';
+  });
+  $('toolHint').textContent=TOOL_HINTS[v]||'';
+  $('brushSizeWrap').style.display = v==='bucket' ? 'none' : 'block';
+  $('bucketTolWrap').style.display = v==='bucket' ? 'block' : 'none';
+}
+$('brushSeg').addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b)return;
+  selectTool(b.dataset.v);
+});
+$('brushSize').addEventListener('input',e=>{brushSize=+e.target.value;$('brushVal').textContent=brushSize;});
+$('tol').addEventListener('input',e=>$('tolVal').textContent=e.target.value);
+$('bucketTol').addEventListener('input',e=>$('bucketTolVal').textContent=e.target.value);
+$('autoCutBtn').addEventListener('click',()=>{pushUndo();autoCut(+$('tol').value);redrawCutView();});
+$('resetCutBtn').addEventListener('click',()=>{
+  pushUndo();
+  const c=cutCanvas.getContext('2d');
+  c.clearRect(0,0,cutCanvas.width,cutCanvas.height);
+  c.drawImage(srcCanvas,0,0);
+  updateSil(); redrawCutView();
+});
+$('undoCutBtn').addEventListener('click',()=>{
+  const prev=undoStack.pop(); if(!prev)return;
+  cutCanvas.getContext('2d').putImageData(prev,0,0);
+  updateSil(); redrawCutView();
+});
+function pushUndo(){
+  const c=cutCanvas.getContext('2d');
+  undoStack.push(c.getImageData(0,0,cutCanvas.width,cutCanvas.height));
+  if(undoStack.length>8)undoStack.shift();
+}
+function redrawCutView(){
+  const x=cutView.getContext('2d');
+  x.clearRect(0,0,cutView.width,cutView.height);
+  x.drawImage(cutCanvas,0,0);
+}
+let cutDrawing=false;
+const brushCursor=$('brushCursor');
+const bucketCursor=$('bucketCursor');
+function updateBrushCursor(e){
+  const r=cutView.getBoundingClientRect();
+  if(brushMode==='bucket'){
+    brushCursor.style.display='none';
+    bucketCursor.style.left=(e.clientX-r.left)+'px';
+    bucketCursor.style.top=(e.clientY-r.top)+'px';
+    bucketCursor.style.display='block';
+    return;
+  }
+  bucketCursor.style.display='none';
+  const cssR=brushSize*r.width/cutView.width;
+  brushCursor.style.width=brushCursor.style.height=(cssR*2)+'px';
+  brushCursor.style.left=(e.clientX-r.left)+'px';
+  brushCursor.style.top=(e.clientY-r.top)+'px';
+  brushCursor.style.borderColor=brushMode==='erase'?'#ff2d78':'#39d97a';
+  brushCursor.style.display='block';
+}
+cutView.addEventListener('pointerdown',e=>{
+  if(brushMode==='bucket'){
+    pushUndo();
+    bucketErase(e);
+    updateSil();
+    return;
+  }
+  cutDrawing=true; pushUndo(); cutView.setPointerCapture(e.pointerId);
+  updateBrushCursor(e); brush(e);
+});
+cutView.addEventListener('pointermove',e=>{
+  updateBrushCursor(e);
+  if(cutDrawing)brush(e);
+});
+cutView.addEventListener('pointerleave',()=>{if(!cutDrawing){brushCursor.style.display='none';bucketCursor.style.display='none';}});
+['pointerup','pointercancel'].forEach(ev=>cutView.addEventListener(ev,()=>{cutDrawing=false;updateSil();}));
+function brush(e){
+  const r=cutView.getBoundingClientRect();
+  const x=(e.clientX-r.left)*cutView.width/r.width;
+  const y=(e.clientY-r.top)*cutView.height/r.height;
+  const c=cutCanvas.getContext('2d');
+  c.save();
+  c.beginPath(); c.arc(x,y,brushSize,0,Math.PI*2);
+  if(brushMode==='erase'){ c.globalCompositeOperation='destination-out'; c.fill(); }
+  else{ c.clip(); c.drawImage(srcCanvas,0,0); }
+  c.restore();
+  redrawCutView();
+}
+/* bucket fill: erase only the contiguous same-colored area starting from
+   the clicked pixel — good for wiping small leftover background bits
+   without touching the rest of the subject. */
+function bucketErase(e){
+  const r=cutView.getBoundingClientRect();
+  const px=Math.floor((e.clientX-r.left)*cutView.width/r.width);
+  const py=Math.floor((e.clientY-r.top)*cutView.height/r.height);
+  const w=cutCanvas.width,h=cutCanvas.height;
+  if(px<0||py<0||px>=w||py>=h)return;
+  const cctx=cutCanvas.getContext('2d');
+  const im=cctx.getImageData(0,0,w,h);
+  const d=im.data;
+  const tol=+$('bucketTol').value;
+  const t2=tol*tol*3;
+  const startI=py*w+px;
+  const sr=d[startI*4],sg=d[startI*4+1],sb=d[startI*4+2],sa=d[startI*4+3];
+  if(sa===0)return; // clicked on already-transparent area, nothing to do
+  const visited=new Uint8Array(w*h);
+  const stack=[startI]; visited[startI]=1;
+  const near=i=>{
+    const dr=d[i*4]-sr,dg=d[i*4+1]-sg,db=d[i*4+2]-sb;
+    return dr*dr+dg*dg+db*db<=t2;
+  };
+  while(stack.length){
+    const i=stack.pop();
+    d[i*4+3]=0;
+    const x=i%w,y=(i/w)|0;
+    const nb=[];
+    if(x>0)nb.push(i-1); if(x<w-1)nb.push(i+1);
+    if(y>0)nb.push(i-w); if(y<h-1)nb.push(i+w);
+    for(const n of nb){
+      if(!visited[n] && d[n*4+3]>0 && near(n)){visited[n]=1;stack.push(n);}
+    }
+  }
+  cctx.putImageData(im,0,0);
+  redrawCutView();
+}
+
+/* ================= particles ================= */
+const sparkles=[],confettis=[],stars=[],hearts=[],rings=[];
+let nextBolt=1.5, bolts=[];
+
+function sparkColor(hue){
+  switch(S.sparkColor){
+    case 'white': return {fill:'#ffffff',glow:'#ffffff'};
+    case 'gold': return {fill:'hsl(46 100% 78%)',glow:'hsl(42 100% 60%)'};
+    case 'pink': return {fill:'hsl(330 100% 82%)',glow:'hsl(330 100% 65%)'};
+    default: return {fill:`hsl(${hue} 100% 78%)`,glow:`hsl(${hue} 100% 62%)`};
+  }
+}
+function spawnSparkle(){
+  sparkles.push({
+    x:Math.random()*W,y:Math.random()*H,
+    life:0,max:40+Math.random()*50,
+    size:(4+Math.random()*13),
+    hue:Math.random()*360,
+    stretch:0.9+Math.random()*1.4,
+    white:Math.random()<0.4,
+  });
+}
+/* uploaded キラキラ.svg — shape only (viewBox 800x800, centered at 400,400) */
+const SPARK_PTS=[
+ [454.992,433.163],[798,397.703],[457.741,366.869],[564.352,235.615],
+ [433.204,345.061],[397.682,2],[366.748,343.747],[235.668,235.615],
+ [340.347,365.206],[2,397.703],[343.238,433.901],[235.668,564.359],
+ [365.213,459.665],[397.682,797.965],[433.782,458.244],[564.352,564.359]
+];
+const sparkPath=new Path2D();
+SPARK_PTS.forEach((p,i)=>{
+  if(i===0)sparkPath.moveTo(p[0]-400,p[1]-400);
+  else sparkPath.lineTo(p[0]-400,p[1]-400);
+});
+sparkPath.closePath();
+function drawSvgSpark(g,r){
+  g.save();
+  const s=r/400;
+  g.scale(s,s);
+  g.fill(sparkPath);
+  g.restore();
+}
+function drawDiamond(g,r,stretch){
+  const k=r*0.22;
+  g.beginPath();
+  g.moveTo(0,-r*stretch); g.lineTo(k,0); g.lineTo(0,r*stretch); g.lineTo(-k,0);
+  g.closePath(); g.fill();
+  g.beginPath();
+  g.moveTo(-r*0.7,0); g.lineTo(0,k*0.9); g.lineTo(r*0.7,0); g.lineTo(0,-k*0.9);
+  g.closePath(); g.fill();
+}
+function drawCross(g,r){
+  const w=Math.max(1.4,r*0.16);
+  g.fillRect(-w/2,-r,w,r*2);
+  g.fillRect(-r,-w/2,r*2,w);
+}
+function drawSparkleShape(g,s,k){
+  const r=s.size*S.sparkSize*(0.6+k);
+  if(S.sparkShape==='dot'){ g.beginPath();g.arc(0,0,r*0.45,0,Math.PI*2);g.fill(); return; }
+  if(S.sparkShape==='cross'){drawCross(g,r);return;}
+  if(S.sparkShape==='diamond'){
+    drawDiamond(g,r,s.stretch);
+    g.beginPath();g.arc(0,0,r*0.14,0,Math.PI*2);g.fill();
+    return;
+  }
+  drawSvgSpark(g,r*1.1*s.stretch*0.8+r*0.3);
+}
+function spawnConfetti(){
+  confettis.push({
+    x:Math.random()*W,y:-14,
+    vx:(Math.random()-.5)*1.4,vy:1.2+Math.random()*2.4,
+    rot:Math.random()*Math.PI*2,vr:(Math.random()-.5)*.25,
+    w:6+Math.random()*8,h:10+Math.random()*10,
+    hue:Math.random()*360,
+  });
+}
+function spawnStar(){
+  const fromLeft=Math.random()<0.5;
+  stars.push({
+    x:fromLeft?-30:W+30, y:Math.random()*H*0.5,
+    vx:(fromLeft?1:-1)*(7+Math.random()*6), vy:2.5+Math.random()*2.5,
+    hue:Math.random()*360, life:0,
+  });
+}
+function spawnHeart(){
+  hearts.push({
+    x:Math.random()*W,y:-24,
+    vy:1.6+Math.random()*2.2, ph:Math.random()*6.28,
+    size:20+Math.random()*26,
+    em:'❤️',
+  });
+}
+
+/* ================= backgrounds ================= */
+function centerGlow(radiusFrac,alpha){
+  const g=ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,W*radiusFrac);
+  g.addColorStop(0,`rgba(255,255,255,${alpha})`);
+  g.addColorStop(0.28,`rgba(255,255,255,${alpha*0.45})`);
+  g.addColorStop(1,'rgba(255,255,255,0)');
+  ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+}
+function raysBG(tb,colFn){
+  ctx.save();ctx.translate(W/2,H/2);ctx.rotate(tb*0.25);
+  const n=28,R=Math.hypot(W,H);
+  for(let i=0;i<n;i++){
+    const a0=i/n*Math.PI*2,a1=(i+1)/n*Math.PI*2;
+    ctx.fillStyle=colFn(i,n,tb);
+    ctx.beginPath();ctx.moveTo(0,0);ctx.arc(0,0,R,a0,a1);ctx.fill();
+  }
+  ctx.restore();
+  centerGlow(0.45,0.95);
+}
+function drawBG(t){
+  const tb=t*S.bgSpeed;
+  switch(S.bg){
+    case 'night':{
+      const g=ctx.createRadialGradient(W/2,H/2,60,W/2,H/2,Math.max(W,H)*0.7);
+      g.addColorStop(0,'#2c1b4f');g.addColorStop(1,'#07030f');
+      ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+      return;
+    }
+    case 'rays':
+      raysBG(tb,(i,n)=>`hsl(${(i/n*360+tb*40)%360} 100% ${i%2? '62%':'50%'})`);
+      return;
+    case 'gold':
+      raysBG(tb,(i,n,tt)=>i%2
+        ?`hsl(46 100% ${72+Math.sin(tt*6+i)*8}%)`
+        :`hsl(${38+Math.sin(tt*4+i)*4} 95% 48%)`);
+      return;
+    case 'pink':
+      raysBG(tb,(i,n,tt)=>i%2
+        ?`hsl(${325+Math.sin(tt*3+i)*8} 100% 78%)`
+        :`hsl(${335+Math.sin(tt*3+i)*8} 95% 60%)`);
+      return;
+    case 'custom':{
+      const hu=S.bgHue, sat=Math.round(S.bgSat*100);
+      raysBG(tb,(i,n,tt)=>i%2
+        ?`hsl(${hu+Math.sin(tt*6+i)*8} ${sat}% ${70+Math.sin(tt*4+i)*8}%)`
+        :`hsl(${hu+Math.sin(tt*4+i)*4} ${Math.max(10,sat-5)}% 48%)`);
+      return;
+    }
+    case 'spiral':{
+      ctx.fillStyle='#12061f';ctx.fillRect(0,0,W,H);
+      const R=Math.hypot(W,H)*0.62;
+      ctx.save();ctx.translate(W/2,H/2);ctx.rotate(tb*0.7);
+      const arms=6;
+      ctx.lineCap='round';
+      for(let a=0;a<arms;a++){
+        ctx.strokeStyle=`hsl(${(a/arms*360+tb*70)%360} 100% 60%)`;
+        ctx.lineWidth=30;
+        ctx.beginPath();
+        let first=true;
+        for(let r=14;r<R;r+=9){
+          const ang=a/arms*Math.PI*2 + r*0.013;
+          const x=Math.cos(ang)*r,y=Math.sin(ang)*r;
+          if(first){ctx.moveTo(x,y);first=false;}else ctx.lineTo(x,y);
+        }
+        ctx.stroke();
+      }
+      ctx.restore();
+      centerGlow(0.3,0.85);
+      return;
+    }
+    case 'burst':{
+      const R=Math.max(W,H)*0.75;
+      const g=ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,R);
+      for(let i=0;i<=8;i++){
+        g.addColorStop(i/8,`hsl(${(tb*80+i*45)%360} 100% ${i===0?85:60}%)`);
+      }
+      ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+      ctx.save();ctx.translate(W/2,H/2);ctx.rotate(-tb*0.4);
+      ctx.fillStyle='rgba(255,255,255,.5)';
+      for(let i=0;i<20;i++){
+        const a=i/20*Math.PI*2;
+        ctx.save();ctx.rotate(a);
+        ctx.beginPath();ctx.moveTo(30,0);ctx.lineTo(R,-14);ctx.lineTo(R,14);ctx.closePath();ctx.fill();
+        ctx.restore();
+      }
+      ctx.restore();
+      centerGlow(0.3,0.9);
+      return;
+    }
+    case 'rings':{
+      ctx.fillStyle='#fff';ctx.fillRect(0,0,W,H);
+      const maxR=Math.hypot(W,H)*0.62;
+      const step=95, off=(tb*130)%step;
+      const count=Math.ceil(maxR/step)+2;
+      for(let i=count;i>=0;i--){
+        const r=i*step+off;
+        ctx.fillStyle=`hsl(${(((r-tb*130)*0.5)%360+360)%360} 95% 62%)`;
+        ctx.beginPath();ctx.arc(W/2,H/2,Math.max(0.1,r),0,Math.PI*2);ctx.fill();
+      }
+      centerGlow(0.28,0.9);
+      return;
+    }
+    case 'speed':{
+      // vivid & bright shifting gradient behind intense white lines
+      const g=ctx.createLinearGradient(0,0,W,H);
+      g.addColorStop(0,`hsl(${(tb*55)%360} 100% 64%)`);
+      g.addColorStop(0.5,`hsl(${(tb*55+120)%360} 100% 60%)`);
+      g.addColorStop(1,`hsl(${(tb*55+240)%360} 100% 64%)`);
+      ctx.fillStyle=g;
+      ctx.fillRect(0,0,W,H);
+      ctx.save();ctx.translate(W/2,H/2);
+      const n=96,R=Math.hypot(W,H);
+      const seed=Math.floor(tb*14);
+      ctx.fillStyle='rgba(255,255,255,.92)';
+      for(let i=0;i<n;i++){
+        const f=prand(i,seed);
+        const a=i/n*Math.PI*2 + (f-0.5)*0.03;
+        const len=0.18+0.38*f;
+        const wdt=1.5+f*15;
+        const ca=Math.cos(a), sa=Math.sin(a);
+        const x1=R*len,y1=-wdt*0.12, x2=R,y2=-wdt, x3=R,y3=wdt, x4=R*len,y4=wdt*0.12;
+        ctx.beginPath();
+        ctx.moveTo(x1*ca-y1*sa, x1*sa+y1*ca);
+        ctx.lineTo(x2*ca-y2*sa, x2*sa+y2*ca);
+        ctx.lineTo(x3*ca-y3*sa, x3*sa+y3*ca);
+        ctx.lineTo(x4*ca-y4*sa, x4*sa+y4*ca);
+        ctx.closePath();ctx.fill();
+      }
+      ctx.restore();
+      centerGlow(0.4,0.9);
+      // hot flicker
+      const fl=prand(7,seed);
+      if(fl>0.72){
+        ctx.fillStyle=`rgba(255,255,255,${(fl-0.72)*0.9})`;
+        ctx.fillRect(0,0,W,H);
+      }
+      return;
+    }
+  }
+}
+
+/* ================= subject + deco ================= */
+function subjectTransform(t){
+  const mt=t*S.moveSpeed;
+  let dx=0,dy=0,sc=1,rot=0;
+  switch(S.move){
+    case 'bounce': dy=-Math.abs(Math.sin(mt*3.4))*38; sc=1+Math.sin(mt*6.8)*0.02; break;
+    case 'pulse':  sc=1+Math.max(0,Math.sin(mt*5))*0.12; break;
+    case 'swing':  rot=Math.sin(mt*2.2)*0.12; dy=Math.sin(mt*4.4)*6; break;
+    case 'shake':  dx=(Math.random()-.5)*10*S.moveSpeed; dy=(Math.random()-.5)*10*S.moveSpeed; break;
+  }
+  return {dx,dy,sc,rot};
+}
+function drawSubject(t){
+  if(!cutCanvas)return;
+  const {dx,dy,sc,rot}=subjectTransform(t);
+  const w=cutCanvas.width*baseScale, h=cutCanvas.height*baseScale;
+  ctx.save();
+  ctx.translate(W/2+S.subX+dx, H/2+18+S.subY+dy);
+  ctx.rotate(rot+S.subRot);
+  ctx.scale(sc*S.subScaleUser,sc*S.subScaleUser);
+
+  if(S.outline!=='none'){
+    const ow=S.outW;
+    let col;
+    if(S.outline==='gold') col=`hsl(${44+Math.sin(t*4)*6} 100% ${60+Math.sin(t*8)*8}%)`;
+    else if(S.outline==='white') col='#ffffff';
+    else if(S.outline==='pink') col=`hsl(${325+Math.sin(t*4)*10} 100% 70%)`;
+    else col=`hsl(${(t*140)%360} 100% 60%)`;
+    tintCtx.clearRect(0,0,tintCanvas.width,tintCanvas.height);
+    tintCtx.drawImage(silCanvas,0,0);
+    tintCtx.globalCompositeOperation='source-in';
+    tintCtx.fillStyle=col;
+    tintCtx.fillRect(0,0,tintCanvas.width,tintCanvas.height);
+    tintCtx.globalCompositeOperation='source-over';
+    ctx.save();
+    ctx.shadowColor=col; ctx.shadowBlur=24;
+    const steps=10;
+    for(let i=0;i<steps;i++){
+      if(i===3)ctx.shadowBlur=0; // glow from a few passes is enough — keeps it fast
+      const a=i/steps*Math.PI*2;
+      if(S.outline==='rainbow'){
+        tintCtx.globalCompositeOperation='source-in';
+        tintCtx.fillStyle=`hsl(${((t*140)+i*36)%360} 100% 58%)`;
+        tintCtx.fillRect(0,0,tintCanvas.width,tintCanvas.height);
+        tintCtx.globalCompositeOperation='source-over';
+      }
+      ctx.drawImage(tintCanvas,-w/2+Math.cos(a)*ow,-h/2+Math.sin(a)*ow,w,h);
+    }
+    ctx.restore();
+  }
+
+  ctx.drawImage(cutCanvas,-w/2,-h/2,w,h);
+  ctx.restore();
+}
+
+/* ================= text ================= */
+function drawCaption(t){
+  const raw=S.text.replace(/\r/g,'');
+  const lines=raw.split('\n').filter((l,i,arr)=>l.trim()!=='' || (i>0 && i<arr.length-1));
+  if(!lines.length){lastCap=null;return;}
+  ctx.save();
+  ctx.translate(S.txtX,S.txtY+Math.sin(t*4)*4);
+  const p=1+Math.max(0,Math.sin(t*5-1))*0.06;
+  ctx.scale(p,p);
+  ctx.rotate(S.txtRot);
+  const longest=lines.reduce((a,b)=>a.length>b.length?a:b,'');
+  const size=Math.min(92, (W*0.66)/Math.max(4,longest.length)*1.35)*S.txtSize;
+  ctx.font=`${size}px ${FONT_MAP[S.font]}, sans-serif`;
+  ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.lineJoin='round';
+  const lineH=size*1.18;
+  const totalH=lineH*lines.length;
+  const mw=Math.max(...lines.map(l=>ctx.measureText(l).width));
+  lastCap={x:S.txtX,y:S.txtY,w:Math.max(80,mw*1.15),h:Math.max(60,totalH*1.15)};
+  let dark='#6d1400', grad;
+  const g=ctx.createLinearGradient(0,-totalH/2,0,totalH/2);
+  if(S.txtStyle==='rainbow'){
+    dark='#2a0845';
+    const gg=ctx.createLinearGradient(-mw/2,0,mw/2,0);
+    for(let i=0;i<=6;i++)gg.addColorStop(i/6,`hsl(${(t*90+i*55)%360} 100% 62%)`);
+    grad=gg;
+  }else if(S.txtStyle==='white'){
+    dark='#111';
+    g.addColorStop(0,'#ffffff');g.addColorStop(1,'#d8d8e8');grad=g;
+  }else if(S.txtStyle==='pink'){
+    dark='#7a0038';
+    g.addColorStop(0,'#ffd7ec');g.addColorStop(0.5,'#ff7ab8');g.addColorStop(1,'#ff3d92');grad=g;
+  }else if(S.txtStyle==='custom'){
+    const hu=S.txtHue;
+    dark=`hsl(${hu} 100% 16%)`;
+    g.addColorStop(0,`hsl(${hu} 100% 86%)`);
+    g.addColorStop(0.5,`hsl(${hu} 100% 55%)`);
+    g.addColorStop(1,`hsl(${hu} 100% 70%)`);
+    grad=g;
+  }else{
+    g.addColorStop(0,'#fff7c0');g.addColorStop(0.45,'#ffd94d');
+    g.addColorStop(0.55,'#ff9d00');g.addColorStop(1,'#ffe27a');grad=g;
+  }
+  ctx.shadowColor='rgba(255,170,0,.75)';ctx.shadowBlur=22;
+  lines.forEach((line,i)=>{
+    const ly=-totalH/2+lineH/2+i*lineH;
+    ctx.strokeStyle=dark;ctx.lineWidth=size*0.22;
+    ctx.strokeText(line,0,ly);
+    ctx.strokeStyle='#ffffff';ctx.lineWidth=size*0.11;
+    ctx.strokeText(line,0,ly);
+    ctx.fillStyle=grad;
+    ctx.fillText(line,0,ly);
+  });
+  ctx.restore();
+}
+
+/* ================= extra FX ================= */
+/* Full-screen wash effects (flash, lightning's ambient light-up, color
+   tint) — drawn right after the background, BEFORE stamps/subject/text,
+   so these never dim or "flicker" the foreground content sitting on
+   top of them. This also spawns/ages the lightning bolts; the actual
+   visible bolt line is drawn later, in drawFX, on top of the subject. */
+function drawScreenWashes(t){
+  if(S.fx.flash){
+    const f=Math.max(0,Math.sin(t*2.4-1.2));
+    const pow=Math.pow(f,20);
+    if(pow>0.02){
+      ctx.fillStyle=`rgba(255,255,255,${pow*0.5})`;
+      ctx.fillRect(0,0,W,H);
+    }
+  }
+  if(S.fx.bolt){
+    if(t>nextBolt){
+      nextBolt=t+0.9+Math.random()*1.6;
+      const x0=W*0.15+Math.random()*W*0.7;
+      const pts=[[x0,-10]];
+      let x=x0,y=-10;
+      while(y<H*0.75){
+        x+=(Math.random()-.5)*90; y+=30+Math.random()*45;
+        pts.push([x,y]);
+      }
+      bolts.push({pts,life:1});
+    }
+    for(let i=bolts.length-1;i>=0;i--){
+      const b=bolts[i];
+      b.life-=0.09*S.speed;
+      if(b.life<=0){bolts.splice(i,1);continue;}
+      if(b.life>0.92){
+        ctx.fillStyle=`rgba(220,235,255,${(b.life-0.92)*2.5})`;
+        ctx.fillRect(0,0,W,H);
+      }
+    }
+  }else bolts.length=0;
+}
+
+function drawFX(t){
+  if(S.fx.rings){
+    if(rings.length<6 && Math.random()<0.03*S.speed)rings.push({r:20,hue:Math.random()*360});
+    for(let i=rings.length-1;i>=0;i--){
+      const rg=rings[i];
+      rg.r+=6*S.speed;
+      const maxR=Math.max(W,H)*0.6;
+      if(rg.r>maxR){rings.splice(i,1);continue;}
+      const a=1-rg.r/maxR;
+      ctx.save();
+      ctx.globalAlpha=a*0.7;
+      ctx.strokeStyle=`hsl(${(rg.hue+t*60)%360} 100% 65%)`;
+      ctx.lineWidth=10+a*10;
+      ctx.shadowColor=ctx.strokeStyle;ctx.shadowBlur=18;
+      ctx.beginPath();ctx.arc(W/2+S.subX,H/2+18+S.subY,rg.r,0,Math.PI*2);ctx.stroke();
+      ctx.restore();
+    }
+  }else rings.length=0;
+
+  if(S.fx.stars){
+    if(stars.length<7 && Math.random()<0.05*S.speed)spawnStar();
+    for(let i=stars.length-1;i>=0;i--){
+      const st=stars[i];
+      st.x+=st.vx*S.speed; st.y+=st.vy*S.speed; st.life++;
+      if(st.x<-80||st.x>W+80||st.y>H+40){stars.splice(i,1);continue;}
+      const len=60+Math.abs(st.vx)*7;
+      const gx=ctx.createLinearGradient(st.x,st.y,st.x-st.vx*len/8,st.y-st.vy*len/8);
+      gx.addColorStop(0,'rgba(255,255,255,.95)');
+      gx.addColorStop(0.3,`hsla(${st.hue} 100% 70% / .7)`);
+      gx.addColorStop(1,'rgba(255,255,255,0)');
+      ctx.save();
+      ctx.strokeStyle=gx;ctx.lineWidth=4;ctx.lineCap='round';
+      ctx.beginPath();ctx.moveTo(st.x,st.y);ctx.lineTo(st.x-st.vx*len/8,st.y-st.vy*len/8);ctx.stroke();
+      ctx.translate(st.x,st.y);
+      ctx.fillStyle='#fff';ctx.shadowColor='#fff';ctx.shadowBlur=14;
+      drawDiamond(ctx,9,1.3);
+      ctx.restore();
+    }
+  }else stars.length=0;
+
+  if(S.fx.hearts){
+    if(hearts.length<26 && Math.random()<0.25*S.speed)spawnHeart();
+    for(let i=hearts.length-1;i>=0;i--){
+      const hh=hearts[i];
+      hh.y+=hh.vy*S.speed;
+      if(hh.y>H+30){hearts.splice(i,1);continue;}
+      ctx.save();
+      ctx.translate(hh.x+Math.sin(t*2.4+hh.ph)*26,hh.y);
+      ctx.rotate(Math.sin(t*3+hh.ph)*0.25);
+      ctx.font=`${hh.size}px 'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji',sans-serif`;
+      ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.fillText(hh.em,0,0);
+      ctx.restore();
+    }
+  }else hearts.length=0;
+
+  // visible lightning line only — spawning/aging/ambient-flash already
+  // happened in drawScreenWashes() before the foreground was drawn
+  if(S.fx.bolt){
+    for(let i=0;i<bolts.length;i++){
+      const b=bolts[i];
+      ctx.save();
+      ctx.globalAlpha=Math.min(1,b.life*1.4);
+      ctx.strokeStyle='#fff';
+      ctx.shadowColor='#9fd4ff';ctx.shadowBlur=24;
+      ctx.lineWidth=4;ctx.lineJoin='round';ctx.lineCap='round';
+      ctx.beginPath();
+      b.pts.forEach((p,j)=>j?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));
+      ctx.stroke();
+      ctx.lineWidth=10;ctx.globalAlpha*=0.25;ctx.stroke();
+      ctx.restore();
+    }
+  }
+}
+
+/* ================= main loop ================= */
+let lastNow=performance.now(), vt=0;
+function frame(now){
+  const dt=Math.min(0.05,(now-lastNow)/1000);
+  lastNow=now;
+  vt+=dt*S.speed;
+  const t=vt;
+  ctx.clearRect(0,0,W,H);
+  if(!S.started && !S.hasImage){
+    ctx.fillStyle='#050208';ctx.fillRect(0,0,W,H);
+    requestAnimationFrame(frame);return;
+  }
+  drawBG(t);
+  drawScreenWashes(t);
+
+  // confetti (behind subject)
+  if(S.fx.confetti){
+    if(confettis.length<90 && Math.random()<0.5*S.speed)spawnConfetti();
+    for(let i=confettis.length-1;i>=0;i--){
+      const c=confettis[i];
+      c.x+=(c.vx+Math.sin(t*3+c.y*0.02))*S.speed;c.y+=c.vy*S.speed;c.rot+=c.vr*S.speed;
+      if(c.y>H+20){confettis.splice(i,1);continue;}
+      ctx.save();ctx.translate(c.x,c.y);ctx.rotate(c.rot);
+      ctx.fillStyle=`hsl(${c.hue} 95% 60%)`;
+      ctx.fillRect(-c.w/2,-c.h/2,c.w,c.h*Math.abs(Math.sin(c.rot*2)+0.2)*0.7);
+      ctx.restore();
+    }
+  }else confettis.length=0;
+
+  // sparkles (behind subject, never on top of the image)
+  const target=S.glitter;
+  if(sparkles.length<target){spawnSparkle();spawnSparkle();spawnSparkle();}
+  while(sparkles.length>target)sparkles.shift();
+  for(let i=sparkles.length-1;i>=0;i--){
+    const s=sparkles[i];
+    s.life+=S.sparkSpeed*S.speed;
+    if(s.life>s.max){sparkles.splice(i,1);continue;}
+    const k=Math.sin(s.life/s.max*Math.PI);
+    const col=s.white?{fill:'#fff',glow:'#fff'}:sparkColor(s.hue);
+    ctx.save();
+    ctx.translate(s.x,s.y);
+    if(S.sparkShape==='cross'||S.sparkShape==='dot')ctx.rotate(s.life*0.04);
+    // cheap glow: enlarged translucent pass instead of shadowBlur
+    ctx.globalAlpha=k*0.3;
+    ctx.fillStyle=col.glow;
+    ctx.save();ctx.scale(1.55,1.55);drawSparkleShape(ctx,s,k);ctx.restore();
+    ctx.globalAlpha=k;
+    ctx.fillStyle=col.fill;
+    drawSparkleShape(ctx,s,k);
+    ctx.restore();
+  }
+
+  // stamp shower (behind subject, like sparkles)
+  const stTarget=S.stampSet.size? S.stampAmt : 0;
+  if(stampParts.length<stTarget){spawnStampPart();spawnStampPart();}
+  while(stampParts.length>stTarget)stampParts.shift();
+  for(let i=stampParts.length-1;i>=0;i--){
+    const s=stampParts[i];
+    // Fade timing runs on real elapsed seconds, NOT on S.speed/S.stampSpeed —
+    // that decoupling is deliberate: no slider combination can ever
+    // compress this into a fast strobe. Only drift/rotation use the
+    // speed sliders, purely cosmetic, never touching opacity.
+    s.age+=dt;
+    s.x+=s.vx*S.stampSpeed*S.speed; s.y+=s.vy*S.stampSpeed*S.speed; s.rot+=s.vr*S.speed;
+    if(s.age>s.duration){stampParts.splice(i,1);continue;}
+    const k=holdCurve(s.age/s.duration,0.15);
+    ctx.save();
+    ctx.translate(s.x,s.y);
+    ctx.rotate(s.rot);
+    ctx.globalAlpha=k;
+    const fs=s.size*S.stampSize*(0.7+k*0.3);
+    ctx.drawImage(getEmojiSprite(toneApplied(s.em)),-fs/2,-fs/2,fs,fs);
+    ctx.restore();
+  }
+
+  drawSubject(t);
+  drawFX(t);
+  drawCaption(t);
+
+  if(S.fx.tint){
+    ctx.save();
+    ctx.globalCompositeOperation='overlay';
+    const g=ctx.createLinearGradient(0,0,W,H);
+    for(let i=0;i<=4;i++)g.addColorStop(i/4,`hsla(${(t*70+i*80)%360} 100% 60% / .35)`);
+    ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+    ctx.restore();
+  }
+
+  if(S.bg!=='speed'){
+    const vg=ctx.createRadialGradient(W/2,H/2,Math.min(W,H)*0.45,W/2,H/2,Math.max(W,H)*0.72);
+    vg.addColorStop(0,'rgba(0,0,0,0)');vg.addColorStop(1,'rgba(20,0,30,.35)');
+    ctx.fillStyle=vg;ctx.fillRect(0,0,W,H);
+  }
+
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+
+/* Show something the moment the person touches any control — a quick
+   preset, an effect, decoration, text, whatever — even before/without
+   a photo. Fires once; after that the canvas is already live. */
+const panelEl=document.querySelector('aside.panel');
+function markStarted(){
+  if(S.started)return;
+  S.started=true;
+  $('emptyMsg').style.display='none';
+}
+panelEl.addEventListener('pointerdown',markStarted,{once:true});
+panelEl.addEventListener('input',markStarted,{once:true});
+
+/* ================= quick presets ================= */
+function applyPreset(p){
+  Object.assign(S,p.state);
+  S.stampSet.clear();
+  (p.stamps||[]).forEach(em=>S.stampSet.add(em));
+  Object.assign(S.fx,{confetti:false,flash:false,stars:false,hearts:false,rings:false,bolt:false,tint:false});
+  Object.assign(S.fx,p.fx||{});
+  syncUI();
+}
+$('presetGold').addEventListener('click',()=>applyPreset({
+  state:{
+    outline:'gold', outW:2, bg:'gold', bgSpeed:1.1,
+    move:'bounce', moveSpeed:1.1,
+    glitter:150, sparkSpeed:1.2, sparkSize:1.0, sparkShape:'svg', sparkColor:'gold',
+    stampAmt:40, stampSpeed:1.1, stampSize:0.8,
+    txtStyle:'gold', font:'deco', speed:1.1,
+  },
+  stamps:[],
+  fx:{confetti:true,flash:true,tint:true},
+}));
+$('presetPop').addEventListener('click',()=>applyPreset({
+  state:{
+    outline:'white', outW:2, bg:'pink', bgSpeed:1.2,
+    move:'swing', moveSpeed:1.2,
+    glitter:30, sparkSpeed:1.3, sparkSize:0.5, sparkShape:'svg', sparkColor:'pink',
+    stampAmt:45, stampSpeed:1.3, stampSize:0.8,
+    txtStyle:'pink', font:'deco', speed:1.1,
+  },
+  stamps:['🤍'],
+  fx:{confetti:true,tint:true},
+}));
+$('presetSpeed').addEventListener('click',()=>applyPreset({
+  state:{
+    outline:'rainbow', outW:6, bg:'speed', bgSpeed:1.8,
+    move:'shake', moveSpeed:1.6,
+    glitter:160, sparkSpeed:2.5, sparkSize:1.1, sparkShape:'svg', sparkColor:'white',
+    stampAmt:55, stampSpeed:1.6, stampSize:1.3,
+    txtStyle:'rainbow', font:'gokubuto', speed:0.5,
+  },
+  stamps:[],
+  fx:{confetti:true,flash:true,bolt:true,tint:true},
+}));
+$('presetNight').addEventListener('click',()=>applyPreset({
+  state:{
+    outline:'white', outW:2, bg:'night', bgSpeed:0.8,
+    move:'swing', moveSpeed:0.9,
+    glitter:150, sparkSpeed:0.9, sparkSize:0.5, sparkShape:'svg', sparkColor:'white',
+    stampAmt:20, stampSpeed:0.8, stampSize:0.9,
+    txtStyle:'gold', font:'mincho', speed:0.9,
+  },
+  stamps:['🌙','✨','⭐'],
+  fx:{stars:true,tint:true},
+}));
+$('presetSpiral').addEventListener('click',()=>applyPreset({
+  state:{
+    outline:'white', outW:7, bg:'spiral', bgSpeed:0.9,
+    move:'bounce', moveSpeed:1.0,
+    glitter:57, sparkSpeed:1.1, sparkSize:1.2, sparkShape:'dot', sparkColor:'rainbow',
+    stampAmt:35, stampSpeed:1.0, stampSize:1.0,
+    txtStyle:'rainbow', font:'pop', speed:1.0,
+  },
+  stamps:['⭐'],
+  fx:{tint:true},
+}));
+$('presetRainbow').addEventListener('click',()=>applyPreset({
+  state:{
+    outline:'rainbow', outW:5, bg:'burst', bgSpeed:2.5,
+    move:'bounce', moveSpeed:1.2,
+    glitter:100, sparkSpeed:1.2, sparkSize:1.0, sparkShape:'svg', sparkColor:'white',
+    stampAmt:40, stampSpeed:1.1, stampSize:1.1,
+    txtStyle:'rainbow', font:'gokubuto', speed:1.2,
+  },
+  stamps:[],
+  fx:{flash:true,tint:true},
+}));
+function syncUI(){
+  segSet('outlineSeg',S.outline); segSet('bgSeg',S.bg); segSet('moveSeg',S.move);
+  segSet('txtStyleSeg',S.txtStyle);
+  segSet('sparkShapeSeg',S.sparkShape); segSet('sparkColorSeg',S.sparkColor);
+  segSet('fontSeg',S.font);
+  $('txtHue').value=S.txtHue; $('txtHueVal').textContent=S.txtHue+'°';
+  $('txtRot').value=Math.round(S.txtRot*180/Math.PI); $('txtRotVal').textContent=Math.round(S.txtRot*180/Math.PI)+'°';
+  $('bgHue').value=S.bgHue; $('bgHueVal').textContent=S.bgHue+'°';
+  $('bgSat').value=S.bgSat*100; $('bgSatVal').textContent=Math.round(S.bgSat*100)+'%';
+  $('bgCustomWrap').style.display = S.bg==='custom' ? 'block' : 'none';
+  $('outW').value=S.outW; $('outWVal').textContent=S.outW+'px';
+  $('glit').value=S.glitter; $('glitVal').textContent=S.glitter;
+  $('sparkSpeed').value=S.sparkSpeed*100; $('sparkSpeedVal').textContent=S.sparkSpeed.toFixed(1);
+  $('sparkSize').value=S.sparkSize*100; $('sparkSizeVal').textContent=S.sparkSize.toFixed(1);
+  $('speed').value=S.speed*100; $('speedVal').textContent=S.speed.toFixed(1);
+  $('bgSpeed').value=S.bgSpeed*100; $('bgSpeedVal').textContent=S.bgSpeed.toFixed(1);
+  $('moveSpeed').value=S.moveSpeed*100; $('moveSpeedVal').textContent=S.moveSpeed.toFixed(1);
+  $('subScale').value=S.subScaleUser*100; $('subScaleVal').textContent=Math.round(S.subScaleUser*100)+'%';
+  $('subRot').value=Math.round(S.subRot*180/Math.PI); $('subRotVal').textContent=Math.round(S.subRot*180/Math.PI)+'°';
+  $('txtSize').value=S.txtSize*100; $('txtSizeVal').textContent=Math.round(S.txtSize*100)+'%';
+  $('stampAmt').value=S.stampAmt; $('stampAmtVal').textContent=S.stampAmt;
+  $('stampSpeed').value=S.stampSpeed*100; $('stampSpeedVal').textContent=S.stampSpeed.toFixed(1);
+  $('stampSize').value=S.stampSize*100; $('stampSizeVal').textContent=S.stampSize.toFixed(1);
+  stampGrid.querySelectorAll('button').forEach(b=>b.classList.toggle('on',S.stampSet.has(b.dataset.base)));
+  refreshStampCap();
+  renderSelectedStamps();
+  syncPosSliders();
+  for(const k in S.fx)$('fx_'+k).checked=S.fx[k];
+}
+
+/* ================= collapsible cards (shorter scroll on phones) ================= */
+document.querySelectorAll('.panel .card h2').forEach((h,idx)=>{
+  const arrow=document.createElement('span');
+  arrow.className='arrow'; arrow.textContent='▼';
+  h.appendChild(arrow);
+  h.addEventListener('click',()=>h.parentElement.classList.toggle('closed'));
+});
+if(window.matchMedia('(max-width:940px)').matches){
+  // on phones start with only step 1 open
+  document.querySelectorAll('.panel .card h2').forEach((h,idx)=>{
+    if(idx>0)h.parentElement.classList.add('closed');
+  });
+}
+
+/* ================= export ================= */
+const recBtn=$('recBtn'),recState=$('recState');
+function setState(msg,on){
+  recState.textContent=msg;
+  recState.classList.toggle('on',!!on);
+}
+let lastResultURL=null;
+function showResult(url,filename,note){
+  if(lastResultURL)URL.revokeObjectURL(lastResultURL);
+  lastResultURL=url;
+  const dl=$('dlLink');
+  dl.href=url; dl.download=filename;
+  dl.textContent='⬇ '+filename+' をダウンロード';
+  $('resultNote').textContent=note||'';
+  $('result').style.display='block';
+}
+
+recBtn.addEventListener('click',()=>{
+  if(S.recording)return;
+  const sec=+$('recSec').value;
+  const fmt=$('recFmt').value;
+
+  if(fmt==='gif'){ recordGif(sec); return; }
+  recordVideo(sec,fmt);
+});
+
+function pickMime(fmt){
+  const mp4s=['video/mp4;codecs=avc1.42E01E','video/mp4;codecs=avc1','video/mp4'];
+  const webms=['video/webm;codecs=vp9','video/webm;codecs=vp8','video/webm'];
+  const list=fmt==='mp4'?mp4s:webms;
+  for(const m of list)if(MediaRecorder.isTypeSupported(m))return m;
+  return null;
+}
+function recordVideo(sec,fmt){
+  let mime=pickMime(fmt);
+  let fellBack=false;
+  if(!mime && fmt==='mp4'){ mime=pickMime('webm'); fellBack=true; }
+  if(!mime){alert('このブラウザは動画の書き出しに対応していません');return;}
+  const stream=cv.captureStream(30);
+  const rec=new MediaRecorder(stream,{mimeType:mime,videoBitsPerSecond:8000000});
+  const chunks=[];
+  rec.ondataavailable=e=>{if(e.data.size)chunks.push(e.data);};
+  rec.onstop=()=>{
+    S.recording=false; S.capturing=false;
+    recBtn.disabled=false;
+    setState('できあがり！',false);
+    const isMp4=mime.includes('mp4');
+    const blob=new Blob(chunks,{type:mime.split(';')[0]});
+    const url=URL.createObjectURL(blob);
+    const note=fellBack
+      ?'このブラウザはMP4書き出しに未対応のためWebMで保存しました（SafariやChrome最新版ならMP4が使えます）'
+      :(isMp4?'':'WebM形式です。SNSによってはMP4変換が必要な場合があります。');
+    showResult(url,'dopadopa.'+(isMp4?'mp4':'webm'),note);
+    $('result').scrollIntoView({behavior:'smooth',block:'nearest'});
+  };
+  S.recording=true; S.capturing=true;
+  recBtn.disabled=true;
+  let remain=sec;
+  setState(`● 撮影中… ${remain}秒`,true);
+  const iv=setInterval(()=>{
+    remain--;
+    if(remain<=0){clearInterval(iv);rec.stop();}
+    else setState(`● 撮影中… ${remain}秒`,true);
+  },1000);
+  rec.start();
+}
+
+/* ---- GIF ---- */
+let gifWorkerURL=null;
+async function recordGif(sec){
+  if(typeof GIF==='undefined'){
+    alert('GIF機能の読み込みに失敗しました。インターネット接続を確認してください。');
+    return;
+  }
+  try{
+    if(!gifWorkerURL){
+      const r=await fetch('https://cdnjs.cloudflare.com/ajax/libs/gif.js/0.2.0/gif.worker.js');
+      gifWorkerURL=URL.createObjectURL(await r.blob());
+    }
+  }catch(err){
+    alert('GIF機能の読み込みに失敗しました。インターネット接続を確認してください。');
+    return;
+  }
+  const gscale=480/Math.max(W,H);
+  const gw=Math.round(W*gscale/2)*2, gh=Math.round(H*gscale/2)*2;
+  const tmp=mkCanvas(gw,gh), tc=tmp.getContext('2d');
+  const gif=new GIF({workers:2,quality:8,width:gw,height:gh,workerScript:gifWorkerURL});
+  const fps=15, total=sec*fps;
+  let n=0;
+  S.recording=true; S.capturing=true;
+  recBtn.disabled=true;
+  setState('● GIF撮影中…',true);
+  const iv=setInterval(()=>{
+    tc.drawImage(cv,0,0,gw,gh);
+    gif.addFrame(tc,{copy:true,delay:Math.round(1000/fps)});
+    n++;
+    setState(`● GIF撮影中… ${Math.round(n/total*100)}%`,true);
+    if(n>=total){
+      clearInterval(iv);
+      setState('GIFに変換中… 0%',true);
+      gif.on('progress',p=>setState(`GIFに変換中… ${Math.round(p*100)}%`,true));
+      gif.on('finished',blob=>{
+        S.recording=false; S.capturing=false;
+        recBtn.disabled=false;
+        setState('できあがり！',false);
+        const url=URL.createObjectURL(blob);
+        showResult(url,'dopadopa.gif','GIFはファイルサイズが大きめです。長さや画面の派手さで変わります。');
+        $('result').scrollIntoView({behavior:'smooth',block:'nearest'});
+      });
+      gif.render();
+    }
+  },1000/fps);
+}
+
+/* snapshot */
+$('snapBtn').addEventListener('click',()=>{
+
+  S.capturing=true;
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    cv.toBlob(b=>{
+      S.capturing=false;
+      const a=document.createElement('a');
+      a.href=URL.createObjectURL(b);
+      a.download='dopadopa.png';
+      a.click();
+    },'image/png');
+  }));
+});
+</script>
+</body>
+</html>
