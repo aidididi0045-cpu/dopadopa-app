@@ -49,11 +49,16 @@ main{
 }
 .stagecol{position:sticky;top:12px}
 @media(max-width:940px){
+  body{padding-top:50vh}
   main{grid-template-columns:1fr}
   .stagecol{position:static}
-  .stage{position:sticky;top:6px;z-index:40}
-  /* keep the preview compact on phones so controls stay reachable */
-  #mainCanvas{width:auto !important;height:auto !important;max-width:100% !important;max-height:42vh !important;}
+  /* pin the preview to the top 50% of the screen — it never scrolls away */
+  .stage{
+    position:fixed;top:0;left:0;right:0;height:50vh;z-index:100;
+    margin:0;border-radius:0 0 22px 22px;box-sizing:border-box;
+  }
+  .screen{height:100%;align-items:center}
+  #mainCanvas{width:auto !important;height:auto !important;max-width:100% !important;max-height:100% !important;}
 }
 /* collapsible cards (tap the heading) */
 .card h2{cursor:pointer;-webkit-user-select:none;user-select:none}
@@ -1992,7 +1997,7 @@ async function recordGif(sec){
   const gscale=480/Math.max(W,H);
   const gw=Math.round(W*gscale/2)*2, gh=Math.round(H*gscale/2)*2;
   const tmp=mkCanvas(gw,gh), tc=tmp.getContext('2d');
-  const gif=new GIF({workers:2,quality:8,width:gw,height:gh,workerScript:gifWorkerURL});
+  const gif=new GIF({workers:2,quality:1,width:gw,height:gh,workerScript:gifWorkerURL});
   const fps=15, total=sec*fps;
   let n=0;
   S.recording=true; S.capturing=true;
@@ -2012,7 +2017,7 @@ async function recordGif(sec){
         recBtn.disabled=false;
         setState('できあがり！',false);
         const url=URL.createObjectURL(blob);
-        showResult(url,'dopadopa.gif','GIFはファイルサイズが大きめです。長さや画面の派手さで変わります。');
+        showResult(url,'dopadopa.gif','色をできるだけ保つ設定にしています。GIFは256色までの形式なので、鮮やかさを完全に維持したい場合はMP4/WebMがおすすめです。ファイルサイズは長さや派手さで変わります。');
         $('result').scrollIntoView({behavior:'smooth',block:'nearest'});
       });
       gif.render();
