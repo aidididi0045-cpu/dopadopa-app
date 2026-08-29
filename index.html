@@ -864,13 +864,32 @@ segInit('toneSeg',v=>{
   // repaint only the buttons that can change
   for(const b of stampGrid.querySelectorAll('button')){
     const base=b.dataset.base;
-    if(supportsTone(base))b.textContent=toneApplied(base);
+    if(supportsTone(base)){
+      const display=toneApplied(base);
+      b.textContent=display;
+      fitStampGlyph(b,display);
+    }
   }
   renderSelectedStamps();
 });
+/* If a glyph doesn't fit its button (e.g. a ZWJ sequence like the
+   turban-person icons falls back to two separate glyphs side by side
+   on some devices/fonts), shrink it down instead of letting the
+   button's overflow silently clip it — a centered clip cuts BOTH
+   edges evenly, which is exactly "half the face is missing". */
+function fitStampGlyph(b,display){
+  b.style.transform='';
+  spriteMeasureCtx.font="19px 'Segoe UI Emoji','Apple Color Emoji','Noto Color Emoji',sans-serif";
+  const mw=spriteMeasureCtx.measureText(display).width;
+  const safeW=40; // conservative available width inside a ~56-60px button
+  if(mw>safeW)b.style.transform=`scale(${Math.max(0.5,safeW/mw)})`;
+}
 function makeStampButton(em,on){
   const b=document.createElement('button');
-  b.type='button'; b.dataset.base=em; b.textContent=toneApplied(em);
+  b.type='button'; b.dataset.base=em;
+  const display=toneApplied(em);
+  b.textContent=display;
+  fitStampGlyph(b,display);
   if(on)b.classList.add('on');
   b.addEventListener('click',()=>toggleStamp(em,b));
   return b;
